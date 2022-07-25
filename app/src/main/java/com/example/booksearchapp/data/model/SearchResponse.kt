@@ -45,7 +45,7 @@ data class Document(
     @field:Json(name = "title")
     val title: String,
     @field:Json(name = "translators")
-    val translators: List<Any>,
+    val translators: List<String>,
     @field:Json(name = "url")
     val url: String
 )
