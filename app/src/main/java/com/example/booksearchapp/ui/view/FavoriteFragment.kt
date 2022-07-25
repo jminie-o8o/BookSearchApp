@@ -1,11 +1,10 @@
 package com.example.booksearchapp.ui.view
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.example.booksearchapp.R
+import androidx.fragment.app.Fragment
 import com.example.booksearchapp.databinding.FragmentFavoriteBinding
 
 class FavoriteFragment : Fragment() {
