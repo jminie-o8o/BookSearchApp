@@ -20,7 +20,7 @@ class SearchFragment : Fragment() {
 
     private var _binding: FragmentSearchBinding? = null
     private val binding get() = _binding!!
-    private val bookSearchViewModel: BookSearchViewModel by activityViewModels { BookSearchViewModelFactory() }
+    private lateinit var bookSearchViewModel: BookSearchViewModel
     private lateinit var bookSearchAdapter: BookSearchAdapter
 
     override fun onCreateView(
@@ -35,7 +35,7 @@ class SearchFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         setupRecyclerView()
         searchBooks()
-
+        bookSearchViewModel = (activity as MainActivity).bookSearchViewModel
         bookSearchViewModel.searchResult.observe(viewLifecycleOwner) {
             bookSearchAdapter.submitList(it.documents)
         }
