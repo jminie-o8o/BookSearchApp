@@ -35,6 +35,10 @@ class SearchFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         setupRecyclerView()
         searchBooks()
+
+        bookSearchViewModel.searchResult.observe(viewLifecycleOwner) {
+            bookSearchAdapter.submitList(it.documents)
+        }
     }
 
     private fun setupRecyclerView() {
