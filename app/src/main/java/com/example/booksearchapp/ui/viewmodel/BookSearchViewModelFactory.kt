@@ -3,7 +3,6 @@ package com.example.booksearchapp.ui.viewmodel
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.example.booksearchapp.data.repository.BookSearchRepository
-import com.example.booksearchapp.data.repository.BookSearchRepositoryImpl
 
 @Suppress("UNCHECKED_CAST")
 class BookSearchViewModelFactory(private val bookSearchRepository: BookSearchRepository): ViewModelProvider.Factory {
