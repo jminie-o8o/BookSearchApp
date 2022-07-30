@@ -18,6 +18,16 @@ class BookSearchAdapter : ListAdapter<Document, BookSearchAdapter.BookSearchView
 
     override fun onBindViewHolder(holder: BookSearchViewHolder, position: Int) {
         holder.bind(getItem(position))
+        holder.itemView.setOnClickListener {
+            onItemClickListener?.let {
+                it(getItem(position))
+            }
+        }
+    }
+
+    private var onItemClickListener: ((Document) -> Unit)? = null
+    fun setOnItemClickListener(listener: (Document) -> Unit) {
+        onItemClickListener = listener
     }
 
     class BookSearchViewHolder(
