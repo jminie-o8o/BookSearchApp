@@ -36,7 +36,7 @@ class SearchFragment : Fragment() {
         searchBooks()
         bookSearchViewModel = (activity as MainActivity).bookSearchViewModel
         bookSearchViewModel.searchResult.observe(viewLifecycleOwner) {
-            bookSearchAdapter.submitList(it.documents)
+            bookSearchAdapter.submitList(it.books)
         }
     }
 

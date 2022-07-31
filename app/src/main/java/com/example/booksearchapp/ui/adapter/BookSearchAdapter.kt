@@ -7,10 +7,10 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
-import com.example.booksearchapp.data.model.Document
+import com.example.booksearchapp.data.model.Book
 import com.example.booksearchapp.databinding.ItemBookPreviewBinding
 
-class BookSearchAdapter : ListAdapter<Document, BookSearchAdapter.BookSearchViewHolder>(BookDiffCallback) {
+class BookSearchAdapter : ListAdapter<Book, BookSearchAdapter.BookSearchViewHolder>(BookDiffCallback) {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BookSearchViewHolder {
         val binding = ItemBookPreviewBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return BookSearchViewHolder(binding)
@@ -25,8 +25,8 @@ class BookSearchAdapter : ListAdapter<Document, BookSearchAdapter.BookSearchView
         }
     }
 
-    private var onItemClickListener: ((Document) -> Unit)? = null
-    fun setOnItemClickListener(listener: (Document) -> Unit) {
+    private var onItemClickListener: ((Book) -> Unit)? = null
+    fun setOnItemClickListener(listener: (Book) -> Unit) {
         onItemClickListener = listener
     }
 
@@ -35,14 +35,14 @@ class BookSearchAdapter : ListAdapter<Document, BookSearchAdapter.BookSearchView
     ) : RecyclerView.ViewHolder(binding.root) {
 
         @SuppressLint("SetTextI18n")
-        fun bind(document: Document) {
-            val author = document.authors.toString().removeSurrounding("[", "]")
-            val publisher = document.publisher
-            val date = if (document.datetime.isNotEmpty()) document.datetime.substring(0, 10) else ""
+        fun bind(book: Book) {
+            val author = book.authors.toString().removeSurrounding("[", "]")
+            val publisher = book.publisher
+            val date = if (book.datetime.isNotEmpty()) book.datetime.substring(0, 10) else ""
 
             itemView.apply {
-                binding.ivArticleImage.load(document.thumbnail)
-                binding.tvTitle.text = document.title
+                binding.ivArticleImage.load(book.thumbnail)
+                binding.tvTitle.text = book.title
                 binding.tvAuthor.text = "$author | $publisher"
                 binding.tvDatetime.text = date
             }
@@ -50,12 +50,12 @@ class BookSearchAdapter : ListAdapter<Document, BookSearchAdapter.BookSearchView
     }
 }
 
-object BookDiffCallback : DiffUtil.ItemCallback<Document>() {
-    override fun areItemsTheSame(oldItem: Document, newItem: Document): Boolean {
+object BookDiffCallback : DiffUtil.ItemCallback<Book>() {
+    override fun areItemsTheSame(oldItem: Book, newItem: Book): Boolean {
         return oldItem.isbn == newItem.isbn
     }
 
-    override fun areContentsTheSame(oldItem: Document, newItem: Document): Boolean {
+    override fun areContentsTheSame(oldItem: Book, newItem: Book): Boolean {
         return oldItem == newItem
     }
 }
