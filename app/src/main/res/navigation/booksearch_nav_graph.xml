@@ -43,6 +43,6 @@
         tools:layout="@layout/fragment_book" >
         <argument
             android:name="book"
-            app:argType="com.example.booksearchapp.data.model.Document" />
+            app:argType="com.example.booksearchapp.data.model.Book" />
     </fragment>
 </navigation>
