@@ -7,10 +7,13 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.DividerItemDecoration
+import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.example.booksearchapp.databinding.FragmentFavoriteBinding
 import com.example.booksearchapp.ui.adapter.BookSearchAdapter
 import com.example.booksearchapp.ui.viewmodel.BookSearchViewModel
+import com.google.android.material.snackbar.Snackbar
 
 class FavoriteFragment : Fragment() {
 
@@ -33,7 +36,7 @@ class FavoriteFragment : Fragment() {
         bookSearchViewModel = (activity as MainActivity).bookSearchViewModel
 
         setupRecyclerView()
-
+        setupTouchHelper(view)
         bookSearchViewModel.favoriteBooks.observe(viewLifecycleOwner) {
             bookSearchAdapter.submitList(it)
         }
@@ -50,6 +53,34 @@ class FavoriteFragment : Fragment() {
         bookSearchAdapter.setOnItemClickListener {
             val action = FavoriteFragmentDirections.actionFragmentFavoriteToFragmentBook(it)
             findNavController().navigate(action)
+        }
+    }
+
+    private fun setupTouchHelper(view: View) {
+        val itemTouchHelperCallback = object : ItemTouchHelper.SimpleCallback(
+            0, ItemTouchHelper.LEFT
+        ) {
+            override fun onMove(
+                recyclerView: RecyclerView,
+                viewHolder: RecyclerView.ViewHolder,
+                target: RecyclerView.ViewHolder
+            ): Boolean {
+                return true // 사용하지 않을 것이기 때문에 return true 로 설정
+            }
+
+            override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
+                val position = viewHolder.bindingAdapterPosition
+                val book = bookSearchAdapter.currentList[position]
+                bookSearchViewModel.deleteBook(book)
+                Snackbar.make(view, "즐겨찾기가 취소되었습니다.", Snackbar.LENGTH_SHORT).apply {
+                    setAction("취소") {
+                        bookSearchViewModel.saveBook(book)
+                    }
+                }.show()
+            }
+        }
+        ItemTouchHelper(itemTouchHelperCallback).apply {
+            attachToRecyclerView(binding.rvFavoriteBooks)
         }
     }
 
