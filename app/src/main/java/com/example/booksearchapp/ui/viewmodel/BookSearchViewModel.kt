@@ -7,11 +7,10 @@ import androidx.lifecycle.viewModelScope
 import com.example.booksearchapp.data.model.Book
 import com.example.booksearchapp.data.model.SearchResponse
 import com.example.booksearchapp.data.repository.BookSearchRepository
-import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.SharingStarted
-import kotlinx.coroutines.flow.StateFlow
-import kotlinx.coroutines.flow.stateIn
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 class BookSearchViewModel(private val bookSearchRepository: BookSearchRepository) : ViewModel() {
 
@@ -20,7 +19,7 @@ class BookSearchViewModel(private val bookSearchRepository: BookSearchRepository
 
     fun searchBooks(query: String) {
         viewModelScope.launch {
-            val response = bookSearchRepository.searchBooks(query, "accuracy", 1, 15)
+            val response = bookSearchRepository.searchBooks(query, getSortMode(), 1, 15)
             if (response.isSuccessful) {
                 response.body()?.let { body ->
                     _searchResult.value = body
@@ -48,4 +47,17 @@ class BookSearchViewModel(private val bookSearchRepository: BookSearchRepository
             SharingStarted.WhileSubscribed(5000),
             listOf()
         )
+
+    // DataStore
+    fun saveSortMode(value: String) {
+        viewModelScope.launch(Dispatchers.IO) {
+            bookSearchRepository.saveSortMode(value)
+        }
+    }
+
+    suspend fun getSortMode(): String {
+        return withContext(Dispatchers.IO) {
+            bookSearchRepository.getSortMode().first()
+        }
+    }
 }
