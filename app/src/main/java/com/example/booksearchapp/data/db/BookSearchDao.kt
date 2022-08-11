@@ -1,5 +1,6 @@
 package com.example.booksearchapp.data.db
 
+import androidx.paging.PagingSource
 import androidx.room.*
 import com.example.booksearchapp.data.model.Book
 import kotlinx.coroutines.flow.Flow
@@ -15,4 +16,7 @@ interface BookSearchDao {
 
     @Query("SELECT * FROM books")
     fun getFavoriteBooks(): Flow<List<Book>>
+
+    @Query("SELECT * FROM books")
+    fun getFavoritePagingBooks(): PagingSource<Int, Book> // Room 은 쿼리 결과를 PagingSource 타입으로 반환받을 수 있다.
 }
