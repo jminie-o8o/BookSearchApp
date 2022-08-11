@@ -28,7 +28,7 @@ class BookSearchPagingAdapter : PagingDataAdapter<Book, BookSearchAdapter.BookSe
     }
 
     private var onItemClickListener: ((Book) -> Unit)? = null
-    fun setInItemClickListener(listener: (Book) -> Unit) {
+    fun setOnItemClickListener(listener: (Book) -> Unit) {
         onItemClickListener = listener
     }
 
