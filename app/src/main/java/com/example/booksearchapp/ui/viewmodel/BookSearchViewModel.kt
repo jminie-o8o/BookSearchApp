@@ -68,5 +68,18 @@ class BookSearchViewModel(private val bookSearchRepository: BookSearchRepository
         bookSearchRepository.getFavoritePagingBooks()
             .cachedIn(viewModelScope) // 코루틴이 데이터흐름을 캐시하고 공유 가능하게 만든다.
             .stateIn(viewModelScope, SharingStarted.WhileSubscribed(5000), PagingData.empty())
-            // UI 에서 관찰해야하는 데이터이기 때문에 stateIn을 써서 StateFlow로 만들어준다.
+    // UI 에서 관찰해야하는 데이터이기 때문에 stateIn을 써서 StateFlow 로 만들어준다.
+
+    private val _searchPagingResult = MutableStateFlow<PagingData<Book>>(PagingData.empty())
+    val searchPagingResult: StateFlow<PagingData<Book>> = _searchPagingResult.asStateFlow()
+
+    fun searchBookPaging(query: String) {
+        viewModelScope.launch {
+            bookSearchRepository.searchBooksPaging(query, getSortMode())
+                .cachedIn(viewModelScope)
+                .collect {
+                    _searchPagingResult.value = it
+                }
+        }
+    }
 }
