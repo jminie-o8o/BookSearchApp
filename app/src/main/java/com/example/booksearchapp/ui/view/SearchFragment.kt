@@ -20,7 +20,9 @@ import com.example.booksearchapp.ui.adapter.BookSearchPagingAdapter
 import com.example.booksearchapp.ui.viewmodel.BookSearchViewModel
 import com.example.booksearchapp.util.Constants.SEARCH_BOOKS_TIME_DELAY
 import com.example.booksearchapp.util.collectLatestStateFlow
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class SearchFragment : Fragment() {
 
     private var _binding: FragmentSearchBinding? = null

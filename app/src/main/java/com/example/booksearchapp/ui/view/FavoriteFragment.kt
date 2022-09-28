@@ -22,9 +22,11 @@ import com.example.booksearchapp.ui.viewmodel.BookSearchViewModel
 import com.example.booksearchapp.util.collectLatestStateFlow
 import com.example.booksearchapp.util.collectStateFlow
 import com.google.android.material.snackbar.Snackbar
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 
+@AndroidEntryPoint
 class FavoriteFragment : Fragment() {
 
     private var _binding: FragmentFavoriteBinding? = null
