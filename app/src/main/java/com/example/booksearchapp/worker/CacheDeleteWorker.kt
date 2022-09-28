@@ -4,7 +4,6 @@ import android.content.Context
 import android.util.Log
 import androidx.work.Worker
 import androidx.work.WorkerParameters
-import java.lang.Exception
 
 class CacheDeleteWorker(
     context: Context,

@@ -2,7 +2,6 @@ package com.example.booksearchapp.ui.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.paging.DifferCallback
 import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
 import com.example.booksearchapp.data.model.Book
