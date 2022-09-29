@@ -80,7 +80,7 @@ class SettingFragment : Fragment() {
     private fun showWorkStatus() {
         bookSearchViewModel.getWorkStatus().observe(viewLifecycleOwner) { workInfo ->
             Log.d("WorkManger", workInfo.toString())
-            if (workInfo.isNotEmpty()) {
+            if (workInfo.isEmpty()) {
                 binding.tvWorkStatus.text = "No Works"
             } else {
                 binding.tvWorkStatus.text = workInfo[0].state.toString()
