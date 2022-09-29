@@ -8,7 +8,7 @@ import android.view.ViewGroup
 import androidx.core.view.isVisible
 import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.activityViewModels
+import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.paging.LoadState
 import androidx.recyclerview.widget.DividerItemDecoration
@@ -16,7 +16,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.booksearchapp.databinding.FragmentSearchBinding
 import com.example.booksearchapp.ui.adapter.BookSearchLoadStateAdapter
 import com.example.booksearchapp.ui.adapter.BookSearchPagingAdapter
-import com.example.booksearchapp.ui.viewmodel.BookSearchViewModel
+import com.example.booksearchapp.ui.viewmodel.SearchViewModel
 import com.example.booksearchapp.util.Constants.SEARCH_BOOKS_TIME_DELAY
 import com.example.booksearchapp.util.collectLatestStateFlow
 import dagger.hilt.android.AndroidEntryPoint
@@ -26,7 +26,7 @@ class SearchFragment : Fragment() {
 
     private var _binding: FragmentSearchBinding? = null
     private val binding get() = _binding!!
-    private val bookSearchViewModel: BookSearchViewModel by activityViewModels()
+    private val searchViewModel: SearchViewModel by viewModels()
     private lateinit var bookSearchAdapter: BookSearchPagingAdapter
 
     override fun onCreateView(
@@ -42,7 +42,7 @@ class SearchFragment : Fragment() {
         setupRecyclerView()
         searchBooks()
         setupLoadState()
-        collectLatestStateFlow(bookSearchViewModel.searchPagingResult) {
+        collectLatestStateFlow(searchViewModel.searchPagingResult) {
             bookSearchAdapter.submitData(it)
         }
     }
@@ -73,7 +73,7 @@ class SearchFragment : Fragment() {
                 text?.let {
                     val query = it.toString().trim()
                     if (query.isNotEmpty()) {
-                        bookSearchViewModel.searchBookPaging(query)
+                        searchViewModel.searchBooksPaging(query)
                     }
                 }
             }
