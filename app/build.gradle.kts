@@ -48,7 +48,11 @@ dependencies {
     implementation(Dependencies.APP_COMPAT)
     implementation(Dependencies.MATERIAL)
     implementation(Dependencies.CONSTRAINT_LAYOUT)
+    // 로컬 테스트용
     testImplementation(Testing.JUNIT4)
+    testImplementation(Testing.TRUTH)
+    testImplementation(Testing.RUNNER)
+    // 계측 테스트용
     androidTestImplementation(Testing.ANDROID_JUNIT)
     androidTestImplementation(Testing.ESPRESSO_CORE)
     implementation(Dependencies.FRAGMENT_KTX)
