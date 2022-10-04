@@ -12,10 +12,12 @@ object Versions {
 
     // Testing
     const val JUNIT4 = "4.13.2"
+    const val JUNIT4_TEST = "1.1.3"
     const val TRUTH = "1.4.0"
     const val TRUTH_CORE = "1.4.0"
     const val TRUTH_EXT = "1.4.0"
     const val RUNNER = "1.4.0"
+    const val ROBOLECTRIC = "4.8.1"
     const val RUNNER_ANDROID = "1.4.0"
     const val ANDROID_JUNIT = "1.1.3"
     const val ESPRESSO_CORE = "3.4.0"

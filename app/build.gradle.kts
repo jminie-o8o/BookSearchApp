@@ -40,6 +40,11 @@ android {
     kapt {
         correctErrorTypes = true
     }
+    testOptions {
+        unitTests {
+            isIncludeAndroidResources = true
+        }
+    }
 }
 
 dependencies {
@@ -50,8 +55,13 @@ dependencies {
     implementation(Dependencies.CONSTRAINT_LAYOUT)
     // 로컬 테스트용
     testImplementation(Testing.JUNIT4)
+    implementation(Testing.JUNIT4_TEST)
     testImplementation(Testing.TRUTH)
     testImplementation(Testing.RUNNER)
+    testImplementation(Testing.ROBOLECTRIC)
+    testImplementation(Testing.TRUTH_CORE)
+    testImplementation(Testing.TRUTH_EXT)
+
     // 계측 테스트용
     androidTestImplementation(Testing.ANDROID_JUNIT)
     androidTestImplementation(Testing.ESPRESSO_CORE)
