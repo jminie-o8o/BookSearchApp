@@ -1,37 +1,36 @@
 package com.example.booksearchapp.data.db
 
-import androidx.room.Room
-import androidx.test.core.app.ApplicationProvider
-import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.filters.SmallTest
 import com.example.booksearchapp.data.model.Book
 import com.google.common.truth.Truth.assertThat
+import dagger.hilt.android.testing.HiltAndroidRule
+import dagger.hilt.android.testing.HiltAndroidTest
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.test.runTest
 import org.junit.After
 import org.junit.Before
+import org.junit.Rule
 import org.junit.Test
-import org.junit.runner.RunWith
+import javax.inject.Inject
+import javax.inject.Named
 
-@RunWith(AndroidJUnit4::class)
+// BookSearchDaoTest 에 Runner 를 교체해서 Hilt 의 EntryPoint 로 만들어준다.
+@HiltAndroidTest
 @SmallTest
 class BookSearchDaoTest {
 
-    private lateinit var database: BookSearchDatabase
+    @Inject
+    @Named("test_db")
+    lateinit var database: BookSearchDatabase
     private lateinit var dao: BookSearchDao
+
+    @get:Rule
+    var hiltRule = HiltAndroidRule(this)
 
     @Before
     fun setUp() {
-        // Before 에서 database 와 dao 를 생성
-        // database 는 inMemoryDatabaseBuilder 를 사용해서 메모리 안에서만 생성하고 테스트가 끝나면 파괴
-        // 또한 Room 은 ANR 을 방지하기 위해 Main 스레드에서 쿼리를 금지하고 있는데
-        // 데이터베이스에서의 쿼리를 멀티스레드에서 수행하면 결과를 예측할 수 없기 때문에
-        // 테스트에서는 allowMainThreadQueries 를 통해 Main 스레드에서의 수행을 명시적으로 허가해준다.
-        database = Room.inMemoryDatabaseBuilder(
-            ApplicationProvider.getApplicationContext(),
-            BookSearchDatabase::class.java
-        ).allowMainThreadQueries().build()
+        hiltRule.inject()
         dao = database.bookSearchDao()
     }
 

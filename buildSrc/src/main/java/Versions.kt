@@ -22,6 +22,8 @@ object Versions {
     const val ANDROID_JUNIT = "1.1.3"
     const val ESPRESSO_CORE = "3.4.0"
     const val COROUTINES = "1.6.2"
+    const val HILT_TEST = "2.41"
+    const val HILT_COMPILER = "2.41"
 
     // Library
     const val RETROFIT = "2.9.0"

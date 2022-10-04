@@ -18,7 +18,7 @@ android {
         versionCode = DefaultConfig.VERSION_CODE
         versionName = DefaultConfig.VERSION_NAME
 
-        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+        testInstrumentationRunner = "com.example.booksearchapp.HiltTestRunner"
     }
 
     buildTypes {
@@ -71,6 +71,8 @@ dependencies {
     androidTestImplementation(Testing.TRUTH_EXT)
     androidTestImplementation(Testing.RUNNER_ANDROID)
     androidTestImplementation(Testing.COROUTINES)
+    androidTestImplementation(Testing.HILT_TEST)
+    kaptAndroidTest(Testing.HILT_TEST_COMPILER)
 
     implementation(Dependencies.FRAGMENT_KTX)
 
