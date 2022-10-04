@@ -62,6 +62,7 @@ dependencies {
     testImplementation(Testing.ROBOLECTRIC)
     testImplementation(Testing.TRUTH_CORE)
     testImplementation(Testing.TRUTH_EXT)
+    testImplementation(Testing.COROUTINES)
 
     // 계측 테스트용
     androidTestImplementation(Testing.ANDROID_JUNIT)
