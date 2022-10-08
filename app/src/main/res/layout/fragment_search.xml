@@ -11,9 +11,9 @@
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:hint="책을 검색하세요."
         android:padding="4dp"
         app:endIconMode="clear_text"
+        app:hintEnabled="false"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -22,6 +22,7 @@
             android:id="@+id/et_search"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:hint="책을 검색하세요."
             android:inputType="textAutoComplete" />
 
     </com.google.android.material.textfield.TextInputLayout>

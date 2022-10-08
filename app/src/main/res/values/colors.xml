@@ -8,6 +8,7 @@
     <color name="black">#FF000000</color>
     <color name="week_black">#3c3c3c</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="week_white">#FAEBCD</color>
     <color name="main_color">#FFAF0A</color>
     <color name="main_color_deep">#FF8200</color>
 </resources>

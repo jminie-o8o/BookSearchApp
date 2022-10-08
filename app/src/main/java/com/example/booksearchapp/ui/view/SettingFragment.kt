@@ -81,9 +81,12 @@ class SettingFragment : Fragment() {
         settingViewModel.getWorkStatus().observe(viewLifecycleOwner) { workInfo ->
             Log.d("WorkManger", workInfo.toString())
             if (workInfo.isEmpty()) {
-                binding.tvWorkStatus.text = "No Works"
+                binding.tvWorkStatus.text = "비활성화"
             } else {
-                binding.tvWorkStatus.text = workInfo[0].state.toString()
+                binding.tvWorkStatus.text = when(workInfo[0].state.toString()) {
+                    "ENQUEUED" -> "활성화"
+                    else -> "취소"
+                }
             }
         }
     }
