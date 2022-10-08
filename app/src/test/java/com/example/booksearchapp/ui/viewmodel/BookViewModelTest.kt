@@ -20,7 +20,7 @@ class BookViewModelTest {
     // 프로덕션 코드에서는 ViewModel 을 싱글턴으로 만들어주지만
     // Test 에서는 그렇게 할 필요는 없다.
     // 생성자로 BookSearchRepository 를 전달을 해줘야 하는데
-    // 이때 FakeBookSearchRepository 를 전달해 준다.
+    // 이때 Test 를 위한 FakeBookSearchRepository 를 전달해 준다.
     @Before
     fun setUp() {
         viewModel = BookViewModel(FakeBookSearchRepository())
@@ -28,6 +28,7 @@ class BookViewModelTest {
 
     // runTest 안에서 임시 객체를 만들어서 ViewModel 의 saveBook 을 통해서 Repository 에 저장
     // Repository 에 저장한 내용을 iewModel.favoriteBooks.first() 을 통해 가져와 contains 을 통해 테스트
+    // 마찬가지로 runTest 가 실험중인 메서드이기 때문에 @ExperimentalCoroutinesApi 를 붙여준다.
     @Test
     @ExperimentalCoroutinesApi
     fun insert_book_to_db() = runTest {

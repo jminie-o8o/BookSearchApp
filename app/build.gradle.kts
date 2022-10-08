@@ -44,6 +44,7 @@ android {
         unitTests {
             isIncludeAndroidResources = true
         }
+        animationsDisabled = true
     }
 }
 
@@ -67,6 +68,8 @@ dependencies {
     // 계측 테스트용
     androidTestImplementation(Testing.ANDROID_JUNIT)
     androidTestImplementation(Testing.ESPRESSO_CORE)
+    androidTestImplementation(Testing.ESPRESSO_CONTRIB)
+    androidTestImplementation(Testing.HAMCREST)
     androidTestImplementation(Testing.TRUTH_CORE)
     androidTestImplementation(Testing.TRUTH_EXT)
     androidTestImplementation(Testing.RUNNER_ANDROID)

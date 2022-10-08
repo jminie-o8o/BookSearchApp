@@ -21,6 +21,8 @@ object Versions {
     const val RUNNER_ANDROID = "1.4.0"
     const val ANDROID_JUNIT = "1.1.3"
     const val ESPRESSO_CORE = "3.4.0"
+    const val ESPRESSO_CONTRIB = "3.4.0"
+    const val HAMCREST = "2.2"
     const val COROUTINES = "1.6.2"
     const val HILT_TEST = "2.41"
     const val HILT_COMPILER = "2.41"

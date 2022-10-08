@@ -25,6 +25,8 @@ class BookSearchDaoTest {
     lateinit var database: BookSearchDatabase
     private lateinit var dao: BookSearchDao
 
+    // Hilt 컴포넌트의 상태와 주입을 관리하는 HiltAndroidRule() 을 테스트에 추가해준다.
+    // @Before 에서 inject() 메서드를 실행하면 주입 설정한 모든 의존성을 Hilt 가 한번에 주입을 해주게 된다.
     @get:Rule
     var hiltRule = HiltAndroidRule(this)
 
