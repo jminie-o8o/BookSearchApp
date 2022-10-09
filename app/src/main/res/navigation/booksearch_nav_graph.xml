@@ -45,4 +45,9 @@
             android:name="book"
             app:argType="com.example.booksearchapp.data.model.Book" />
     </fragment>
+    <fragment
+        android:id="@+id/fragment_book_report"
+        android:name="com.example.booksearchapp.ui.view.BookReportFragment"
+        android:label="fragment_book_report"
+        tools:layout="@layout/fragment_book_report" />
 </navigation>
