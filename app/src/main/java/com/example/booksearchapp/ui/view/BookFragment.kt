@@ -49,7 +49,7 @@ class BookFragment : Fragment() {
             bookViewModel.saveBook(book)
             Snackbar.make(view, "책이 저장되었습니다.", Snackbar.LENGTH_SHORT).show()
         }
-        hideBottomNavigation(true)
+        hideBottomNavigation()
         goBack(navController)
     }
 
@@ -70,10 +70,9 @@ class BookFragment : Fragment() {
         super.onDestroy()
     }
 
-    private fun hideBottomNavigation(flag: Boolean) {
+    private fun hideBottomNavigation() {
         val bottomNavigation = (activity as MainActivity).findViewById<BottomNavigationView>(R.id.bottom_navigation_view)
-        if (flag) bottomNavigation.visibility = View.GONE
-        else bottomNavigation.visibility = View.VISIBLE
+        bottomNavigation.visibility = View.GONE
     }
 
     private fun goBack(navController: NavController) {
