@@ -8,6 +8,7 @@
     <string name="book_report">독후감</string>
     <string name="setting_menu">설정</string>
     <string name="book_info">Book Info</string>
+    <string name="register_book_report">독후감 쓰러가기</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
