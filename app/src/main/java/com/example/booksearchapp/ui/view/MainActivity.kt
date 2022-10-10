@@ -1,6 +1,9 @@
 package com.example.booksearchapp.ui.view
 
+import android.content.Context
 import android.os.Bundle
+import android.view.MotionEvent
+import android.view.inputmethod.InputMethodManager
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
@@ -28,5 +31,13 @@ class MainActivity : AppCompatActivity() {
             .findFragmentById(R.id.booksearch_nav_host_fragment) as NavHostFragment? ?: return
         navController = host.navController
         binding.bottomNavigationView.setupWithNavController(navController)
+    }
+
+    // EditText 이외에 다른 곳을 터치하면 소프트 키보드 내려가는 기능
+    override fun onTouchEvent(event: MotionEvent?): Boolean {
+        val imm: InputMethodManager =
+            getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+        imm.hideSoftInputFromWindow(currentFocus?.windowToken, 0)
+        return true
     }
 }

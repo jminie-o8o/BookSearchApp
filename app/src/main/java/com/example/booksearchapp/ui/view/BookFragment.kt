@@ -8,9 +8,13 @@ import android.view.ViewGroup
 import android.webkit.WebViewClient
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.navigation.NavController
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
+import com.example.booksearchapp.R
 import com.example.booksearchapp.databinding.FragmentBookBinding
 import com.example.booksearchapp.ui.viewmodel.BookViewModel
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.snackbar.Snackbar
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -33,7 +37,7 @@ class BookFragment : Fragment() {
     @SuppressLint("SetJavaScriptEnabled")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
+        val navController = findNavController()
         val book = args.book
         binding.webView.apply {
             webViewClient = WebViewClient()
@@ -45,6 +49,8 @@ class BookFragment : Fragment() {
             bookViewModel.saveBook(book)
             Snackbar.make(view, "책이 저장되었습니다.", Snackbar.LENGTH_SHORT).show()
         }
+        hideBottomNavigation(true)
+        goBack(navController)
     }
 
     // ConstructiveFirst, DestructiveLast 룰에 따라 super 의 위치를 지정
@@ -62,5 +68,17 @@ class BookFragment : Fragment() {
     override fun onDestroy() {
         _binding = null
         super.onDestroy()
+    }
+
+    private fun hideBottomNavigation(flag: Boolean) {
+        val bottomNavigation = (activity as MainActivity).findViewById<BottomNavigationView>(R.id.bottom_navigation_view)
+        if (flag) bottomNavigation.visibility = View.GONE
+        else bottomNavigation.visibility = View.VISIBLE
+    }
+
+    private fun goBack(navController: NavController) {
+        binding.btnGoBack.setOnClickListener {
+            navController.popBackStack()
+        }
     }
 }
