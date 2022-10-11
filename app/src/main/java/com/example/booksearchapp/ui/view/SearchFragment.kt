@@ -13,12 +13,14 @@ import androidx.navigation.fragment.findNavController
 import androidx.paging.LoadState
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.booksearchapp.R
 import com.example.booksearchapp.databinding.FragmentSearchBinding
 import com.example.booksearchapp.ui.adapter.BookSearchLoadStateAdapter
 import com.example.booksearchapp.ui.adapter.BookSearchPagingAdapter
 import com.example.booksearchapp.ui.viewmodel.SearchViewModel
 import com.example.booksearchapp.util.Constants.SEARCH_BOOKS_TIME_DELAY
 import com.example.booksearchapp.util.collectLatestStateFlow
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -45,6 +47,7 @@ class SearchFragment : Fragment() {
         collectLatestStateFlow(searchViewModel.searchPagingResult) {
             bookSearchAdapter.submitData(it)
         }
+        showBottomNavigation()
     }
 
     private fun setupRecyclerView() {
@@ -99,5 +102,10 @@ class SearchFragment : Fragment() {
 
             binding.progressBar.isVisible = loadState.refresh is LoadState.Loading
         }
+    }
+
+    private fun showBottomNavigation() {
+        val bottomNavigation = (activity as MainActivity).findViewById<BottomNavigationView>(R.id.bottom_navigation_view)
+        bottomNavigation.visibility = View.VISIBLE
     }
 }
