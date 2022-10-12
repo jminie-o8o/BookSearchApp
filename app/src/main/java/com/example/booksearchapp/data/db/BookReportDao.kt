@@ -12,6 +12,9 @@ import kotlinx.coroutines.flow.Flow
 @Dao
 interface BookReportDao {
 
+    @Query("SELECT * FROM bookReports WHERE isbn = :isbn")
+    suspend fun getBookReportDetail(isbn: String): BookReport
+
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertBookReport(bookReport: BookReport)
 

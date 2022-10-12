@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import coil.load
 import com.example.booksearchapp.data.model.Book
@@ -62,6 +63,8 @@ class BookReportRegisterFragment : Fragment() {
                 reportContents = binding.tlBookReportContents.editText?.text?.toString() ?: ""
             )
             bookReportRegisterViewModel.saveBookReport(bookReport)
+            val action = BookReportRegisterFragmentDirections.actionRegisterBookReportFragmentToBookReportDetailFragment(bookReport)
+            findNavController().navigate(action)
         }
     }
 

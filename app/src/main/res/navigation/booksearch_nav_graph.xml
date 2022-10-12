@@ -65,5 +65,19 @@
         <argument
             android:name="book"
             app:argType="com.example.booksearchapp.data.model.Book" />
+        <action
+            android:id="@+id/action_registerBookReportFragment_to_bookReportDetailFragment"
+            app:destination="@id/bookReportDetailFragment"
+            app:popUpTo="@id/fragment_book"
+            app:popUpToInclusive="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/bookReportDetailFragment"
+        android:name="com.example.booksearchapp.ui.view.BookReportDetailFragment"
+        android:label="fragment_book_report_detail"
+        tools:layout="@layout/fragment_book_report_detail" >
+        <argument
+            android:name="bookReport"
+            app:argType="com.example.booksearchapp.data.model.BookReport" />
     </fragment>
 </navigation>

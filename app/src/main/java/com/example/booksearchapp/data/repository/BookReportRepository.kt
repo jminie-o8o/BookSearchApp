@@ -7,6 +7,8 @@ import kotlinx.coroutines.flow.Flow
 interface BookReportRepository {
 
     // Room
+    suspend fun getBookReportDetail(isbn: String) : BookReport
+
     suspend fun insertBookReport(bookReport: BookReport)
 
     suspend fun deleteBookReport(bookReport: BookReport)

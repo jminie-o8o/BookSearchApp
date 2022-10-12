@@ -12,6 +12,10 @@ import javax.inject.Inject
 class BookReportRepositoryImpl @Inject constructor(
     private val db: BookReportDatabase
 ): BookReportRepository {
+    override suspend fun getBookReportDetail(isbn: String): BookReport {
+        return db.bookReportDao().getBookReportDetail(isbn)
+    }
+
     override suspend fun insertBookReport(bookReport: BookReport) {
         db.bookReportDao().insertBookReport(bookReport)
     }
