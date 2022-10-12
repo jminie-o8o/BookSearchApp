@@ -2,10 +2,11 @@ package com.example.booksearchapp.ui.viewmodel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.booksearchapp.data.model.Book
+import com.example.booksearchapp.data.model.BookReport
 import com.example.booksearchapp.data.repository.BookReportRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -15,7 +16,10 @@ class RegisterBookReportViewModel @Inject constructor(
 ) : ViewModel() {
 
     // Room
-    fun saveBookReport(book: Book) = viewModelScope.launch(Dispatchers.IO) {
-
+    fun saveBookReport(bookReport: BookReport) = viewModelScope.launch(Dispatchers.IO) {
+        bookReportRepository.insertBookReport(bookReport)
     }
+
+    // For Test
+    val bookReports: Flow<List<BookReport>> = bookReportRepository.getBookReport()
 }
