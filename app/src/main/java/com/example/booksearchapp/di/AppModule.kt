@@ -8,6 +8,7 @@ import androidx.datastore.preferences.preferencesDataStoreFile
 import androidx.room.Room
 import androidx.work.WorkManager
 import com.example.booksearchapp.data.api.BookSearchApi
+import com.example.booksearchapp.data.db.BookReportDatabase
 import com.example.booksearchapp.data.db.BookSearchDatabase
 import com.example.booksearchapp.util.Constants.BASE_URL
 import com.example.booksearchapp.util.Constants.DATASTORE_NAME
@@ -61,6 +62,16 @@ object AppModule {
             context.applicationContext,
             BookSearchDatabase::class.java,
             "favorite-books"
+        ).build()
+
+    // Room
+    @Singleton
+    @Provides
+    fun provideBookReportDatabase(@ApplicationContext context: Context): BookReportDatabase =
+        Room.databaseBuilder(
+            context.applicationContext,
+            BookReportDatabase::class.java,
+            "report-books"
         ).build()
 
     // DataStore
