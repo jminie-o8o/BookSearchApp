@@ -12,16 +12,18 @@ import coil.load
 import com.example.booksearchapp.data.model.Book
 import com.example.booksearchapp.data.model.BookReport
 import com.example.booksearchapp.databinding.FragmentRegisterBookReportBinding
-import com.example.booksearchapp.ui.viewmodel.BookReportViewModel
+import com.example.booksearchapp.ui.adapter.BookReportPagingAdapter
+import com.example.booksearchapp.ui.viewmodel.BookReportRegisterViewModel
+import com.example.booksearchapp.util.collectLatestStateFlow
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class RegisterBookReportFragment : Fragment() {
+class BookReportRegisterFragment : Fragment() {
     private var _binding: FragmentRegisterBookReportBinding? = null
     private val binding get() = _binding!!
 
-    private val args by navArgs<RegisterBookReportFragmentArgs>()
-    private val bookReportViewModel: BookReportViewModel by viewModels()
+    private val args by navArgs<BookReportRegisterFragmentArgs>()
+    private val bookReportRegisterViewModel: BookReportRegisterViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -59,7 +61,7 @@ class RegisterBookReportFragment : Fragment() {
                 reportTitle = binding.tlBookReportTitle.editText?.text?.toString() ?: "",
                 reportContents = binding.tlBookReportContents.editText?.text?.toString() ?: ""
             )
-            bookReportViewModel.saveBookReport(bookReport)
+            bookReportRegisterViewModel.saveBookReport(bookReport)
         }
     }
 

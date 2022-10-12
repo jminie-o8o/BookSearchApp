@@ -24,7 +24,11 @@ class BookSearchPagingAdapter :
         viewType: Int
     ): BookSearchAdapter.BookSearchViewHolder {
         return BookSearchAdapter.BookSearchViewHolder(
-            ItemBookPreviewBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+            ItemBookPreviewBinding.inflate(
+                LayoutInflater.from(parent.context),
+                parent,
+                false
+            )
         )
     }
 

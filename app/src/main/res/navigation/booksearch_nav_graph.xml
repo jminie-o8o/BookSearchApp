@@ -59,7 +59,7 @@
         tools:layout="@layout/fragment_book_report" />
     <fragment
         android:id="@+id/registerBookReportFragment"
-        android:name="com.example.booksearchapp.ui.view.RegisterBookReportFragment"
+        android:name="com.example.booksearchapp.ui.view.BookReportRegisterFragment"
         android:label="fragment_register_book_report"
         tools:layout="@layout/fragment_register_book_report" >
         <argument
