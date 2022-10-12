@@ -4,7 +4,7 @@ import androidx.room.Entity
 
 @Entity(tableName = "bookReports")
 data class BookReport(
-    val id: Int,
+    val isbn: String,
     val thumbnail: String,
     val title: String,
     val author: String,
