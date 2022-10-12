@@ -12,6 +12,7 @@ import androidx.navigation.NavController
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.example.booksearchapp.R
+import com.example.booksearchapp.data.model.Book
 import com.example.booksearchapp.databinding.FragmentBookBinding
 import com.example.booksearchapp.ui.viewmodel.BookViewModel
 import com.google.android.material.bottomnavigation.BottomNavigationView
@@ -34,23 +35,30 @@ class BookFragment : Fragment() {
         return binding.root
     }
 
-    @SuppressLint("SetJavaScriptEnabled")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val navController = findNavController()
         val book = args.book
+        setWabView(book)
+        saveBook(view, book)
+        hideBottomNavigation()
+        goBack(navController)
+    }
+
+    @SuppressLint("SetJavaScriptEnabled")
+    private fun setWabView(book: Book) {
         binding.webView.apply {
             webViewClient = WebViewClient()
             settings.javaScriptEnabled = true
             loadUrl(book.url)
         }
+    }
 
+    private fun saveBook(view: View, book: Book) {
         binding.fabFavorite.setOnClickListener {
             bookViewModel.saveBook(book)
             Snackbar.make(view, "책이 저장되었습니다.", Snackbar.LENGTH_SHORT).show()
         }
-        hideBottomNavigation()
-        goBack(navController)
     }
 
     // ConstructiveFirst, DestructiveLast 룰에 따라 super 의 위치를 지정
