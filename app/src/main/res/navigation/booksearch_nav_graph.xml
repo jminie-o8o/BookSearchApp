@@ -44,10 +44,26 @@
         <argument
             android:name="book"
             app:argType="com.example.booksearchapp.data.model.Book" />
+        <action
+            android:id="@+id/action_fragment_book_to_registerBookReportFragment"
+            app:destination="@id/registerBookReportFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim" />
     </fragment>
     <fragment
         android:id="@+id/fragment_book_report"
         android:name="com.example.booksearchapp.ui.view.BookReportFragment"
         android:label="fragment_book_report"
         tools:layout="@layout/fragment_book_report" />
+    <fragment
+        android:id="@+id/registerBookReportFragment"
+        android:name="com.example.booksearchapp.ui.view.RegisterBookReportFragment"
+        android:label="fragment_register_book_report"
+        tools:layout="@layout/fragment_register_book_report" >
+        <argument
+            android:name="book"
+            app:argType="com.example.booksearchapp.data.model.Book" />
+    </fragment>
 </navigation>

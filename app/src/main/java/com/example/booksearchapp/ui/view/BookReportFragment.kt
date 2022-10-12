@@ -22,4 +22,9 @@ class BookReportFragment : Fragment() {
         _binding = FragmentBookReportBinding.inflate(inflater, container, false)
         return binding.root
     }
+
+    override fun onDestroyView() {
+        _binding = null
+        super.onDestroyView()
+    }
 }

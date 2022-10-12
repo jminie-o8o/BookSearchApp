@@ -43,6 +43,7 @@ class BookFragment : Fragment() {
         saveBook(view, book)
         hideBottomNavigation()
         goBack(navController)
+        registerBookReport(book)
     }
 
     @SuppressLint("SetJavaScriptEnabled")
@@ -58,6 +59,13 @@ class BookFragment : Fragment() {
         binding.fabFavorite.setOnClickListener {
             bookViewModel.saveBook(book)
             Snackbar.make(view, "책이 저장되었습니다.", Snackbar.LENGTH_SHORT).show()
+        }
+    }
+
+    private fun registerBookReport(book: Book) {
+        binding.btnRegisterBookReport.setOnClickListener {
+            val action = BookFragmentDirections.actionFragmentBookToRegisterBookReportFragment(book)
+            findNavController().navigate(action)
         }
     }
 
