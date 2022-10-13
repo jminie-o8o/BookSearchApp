@@ -81,7 +81,7 @@ class FavoriteFragment : Fragment() {
                 val book = bookSearchAdapter.peek(position)
                 book?.let { book ->
                     favoriteViewModel.deleteBook(book)
-                    Snackbar.make(view, "즐겨찾기가 취소되었습니다.", Snackbar.LENGTH_SHORT).apply {
+                    Snackbar.make(view, "즐겨찾기가 취소되었어요.", Snackbar.LENGTH_SHORT).apply {
                         setAction("취소") {
                             favoriteViewModel.saveBook(book)
                         }
