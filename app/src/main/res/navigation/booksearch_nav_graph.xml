@@ -98,5 +98,22 @@
             app:exitAnim="@anim/nav_default_exit_anim"
             app:popEnterAnim="@anim/nav_default_pop_enter_anim"
             app:popExitAnim="@anim/nav_default_pop_exit_anim" />
+        <action
+            android:id="@+id/action_bookReportDetailFragment_to_deleteFragmentDialog"
+            app:destination="@id/deleteFragmentDialog" />
     </fragment>
+    <dialog
+        android:id="@+id/deleteFragmentDialog"
+        android:name="com.example.booksearchapp.ui.view.DeleteFragmentDialog"
+        android:label="DeleteFragmentDialog"
+        tools:layout="@layout/delete_fragment_dialog">
+        <argument
+            android:name="bookReport"
+            app:argType="com.example.booksearchapp.data.model.BookReport" />
+        <action
+            android:id="@+id/action_deleteFragmentDialog_to_fragment_book_report"
+            app:destination="@id/fragment_book_report"
+            app:popUpTo="@id/fragment_book_report"
+            app:popUpToInclusive="true" />
+    </dialog>
 </navigation>

@@ -26,7 +26,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/tv_btn_keep_write"
+            android:id="@+id/tv_btn_keep"
             android:layout_width="150dp"
             android:layout_height="40dp"
             android:background="@drawable/dialog_button_keep_write"
@@ -38,7 +38,7 @@
 
 
         <TextView
-            android:id="@+id/tv_btn_cancel"
+            android:id="@+id/tv_btn_delete"
             android:layout_width="150dp"
             android:layout_height="40dp"
             android:background="@drawable/dialog_button_cancel"

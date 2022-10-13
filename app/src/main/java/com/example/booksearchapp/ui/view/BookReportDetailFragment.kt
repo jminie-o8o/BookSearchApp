@@ -73,8 +73,7 @@ class BookReportDetailFragment : Fragment() {
                     true
                 }
                 R.id.delete_book_report -> {
-                    bookReportDetailViewModel.deleteBookReport(bookReport)
-                    findNavController().popBackStack()
+                    findNavController().navigate(BookReportDetailFragmentDirections.actionBookReportDetailFragmentToDeleteFragmentDialog(bookReport))
                     true
                 }
                 else -> false
