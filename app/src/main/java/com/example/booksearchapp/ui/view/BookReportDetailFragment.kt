@@ -1,10 +1,14 @@
 package com.example.booksearchapp.ui.view
 
 import android.annotation.SuppressLint
+import android.app.AlertDialog
+import android.graphics.Color
+import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
@@ -71,12 +75,32 @@ class BookReportDetailFragment : Fragment() {
                     true
                 }
                 R.id.delete_book_report -> {
-                    findNavController().navigate(BookReportDetailFragmentDirections.actionBookReportDetailFragmentToDeleteFragmentDialog(bookReport))
+                    showAlertDialog(bookReport)
                     true
                 }
                 else -> false
             }
         }
+    }
+
+    private fun showAlertDialog(bookReport: BookReport) {
+        val layoutInflater = LayoutInflater.from(requireContext())
+        val view = layoutInflater.inflate(R.layout.delete_fragment_dialog, null)
+        val alertDialog = AlertDialog.Builder(requireContext())
+            .setView(view)
+            .create()
+        val buttonKeep = view.findViewById<TextView>(R.id.tv_btn_keep)
+        val buttonDelete = view.findViewById<TextView>(R.id.tv_btn_delete)
+        buttonKeep.setOnClickListener {
+            alertDialog.dismiss()
+        }
+        buttonDelete.setOnClickListener {
+            bookReportDetailViewModel.deleteBookReport(bookReport)
+            findNavController().popBackStack()
+            alertDialog.dismiss()
+        }
+        alertDialog?.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+        alertDialog.show()
     }
 
     private fun hideBottomNavigation() {
