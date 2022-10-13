@@ -46,6 +46,7 @@ class BookReportPagingAdapter :
             itemView.apply {
                 binding.ivArticleImage.load(bookReport.thumbnail)
                 binding.tvTitle.text = bookReport.reportTitle
+                binding.tvDatetime.text = bookReport.date
             }
         }
     }

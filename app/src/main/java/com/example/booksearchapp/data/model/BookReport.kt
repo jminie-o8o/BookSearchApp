@@ -15,5 +15,6 @@ data class BookReport(
     val author: String,
     val publisher: String,
     val reportTitle: String,
-    val reportContents: String
+    val reportContents: String,
+    val date: String
 ): Parcelable

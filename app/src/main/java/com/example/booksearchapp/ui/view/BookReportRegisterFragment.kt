@@ -17,6 +17,8 @@ import com.example.booksearchapp.ui.adapter.BookReportPagingAdapter
 import com.example.booksearchapp.ui.viewmodel.BookReportRegisterViewModel
 import com.example.booksearchapp.util.collectLatestStateFlow
 import dagger.hilt.android.AndroidEntryPoint
+import java.text.SimpleDateFormat
+import java.util.Date
 
 @AndroidEntryPoint
 class BookReportRegisterFragment : Fragment() {
@@ -60,12 +62,20 @@ class BookReportRegisterFragment : Fragment() {
                 author = author,
                 publisher = book.publisher,
                 reportTitle = binding.tlBookReportTitle.editText?.text?.toString() ?: "",
-                reportContents = binding.tlBookReportContents.editText?.text?.toString() ?: ""
+                reportContents = binding.tlBookReportContents.editText?.text?.toString() ?: "",
+                date = getDate()
             )
             bookReportRegisterViewModel.saveBookReport(bookReport)
             val action = BookReportRegisterFragmentDirections.actionRegisterBookReportFragmentToBookReportDetailFragment(bookReport)
             findNavController().navigate(action)
         }
+    }
+
+    @SuppressLint("SimpleDateFormat")
+    private fun getDate(): String {
+        val simpleDateFormat = SimpleDateFormat("yyyy-MM-dd")
+        val date = Date()
+        return simpleDateFormat.format(date)
     }
 
     override fun onDestroyView() {
