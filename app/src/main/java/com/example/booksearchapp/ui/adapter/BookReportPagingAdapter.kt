@@ -6,6 +6,7 @@ import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
+import com.example.booksearchapp.data.model.Book
 import com.example.booksearchapp.data.model.BookReport
 import com.example.booksearchapp.databinding.ItemBookReportBinding
 
@@ -14,7 +15,13 @@ class BookReportPagingAdapter :
         BookReportDiffCallback
     ) {
     override fun onBindViewHolder(holder: BookReportViewHolder, position: Int) {
-        getItem(position)?.let { holder.bind(it) }
+        val bookReport = getItem(position)
+        bookReport?.let { bookReport ->
+            holder.bind(bookReport)
+            holder.itemView.setOnClickListener {
+                onItemClickListener?.let { it(bookReport) }
+            }
+        }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BookReportViewHolder {
@@ -25,6 +32,11 @@ class BookReportPagingAdapter :
                 false
             )
         )
+    }
+
+    private var onItemClickListener: ((BookReport) -> Unit)? = null
+    fun setOnItemClickListener(listener: (BookReport) -> Unit) {
+        onItemClickListener = listener
     }
 
     class BookReportViewHolder(

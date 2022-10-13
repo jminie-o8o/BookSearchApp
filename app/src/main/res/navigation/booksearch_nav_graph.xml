@@ -56,7 +56,11 @@
         android:id="@+id/fragment_book_report"
         android:name="com.example.booksearchapp.ui.view.BookReportFragment"
         android:label="fragment_book_report"
-        tools:layout="@layout/fragment_book_report" />
+        tools:layout="@layout/fragment_book_report" >
+        <action
+            android:id="@+id/action_fragment_book_report_to_bookReportDetailFragment"
+            app:destination="@id/bookReportDetailFragment" />
+    </fragment>
     <fragment
         android:id="@+id/registerBookReportFragment"
         android:name="com.example.booksearchapp.ui.view.BookReportRegisterFragment"
