@@ -7,6 +7,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
+import androidx.navigation.NavController
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import coil.load
 import com.example.booksearchapp.R
@@ -14,6 +16,7 @@ import com.example.booksearchapp.data.model.BookReport
 import com.example.booksearchapp.databinding.FragmentBookReportDetailBinding
 import com.example.booksearchapp.ui.viewmodel.BookReportDetailViewModel
 import com.example.booksearchapp.util.collectStateFlow
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -37,6 +40,8 @@ class BookReportDetailFragment : Fragment() {
         val bookReport = args.bookReport
         getBookReport(bookReport)
         setBookReport()
+        hideBottomNavigation()
+        goBack()
     }
 
     private fun getBookReport(bookReport: BookReport) {
@@ -55,6 +60,17 @@ class BookReportDetailFragment : Fragment() {
                 binding.tvBookReportTitleDetail.text = bookReport.reportTitle
                 binding.tvBookReportContentsDetail.text = bookReport.reportContents
             }
+        }
+    }
+
+    private fun hideBottomNavigation() {
+        val bottomNavigation = (activity as MainActivity).findViewById<BottomNavigationView>(R.id.bottom_navigation_view)
+        bottomNavigation.visibility = View.GONE
+    }
+
+    private fun goBack() {
+        binding.btnGoBack.setOnClickListener {
+            findNavController().popBackStack()
         }
     }
 

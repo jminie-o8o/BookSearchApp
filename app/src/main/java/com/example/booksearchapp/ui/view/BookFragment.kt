@@ -37,12 +37,11 @@ class BookFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val navController = findNavController()
         val book = args.book
         setWabView(book)
         saveBook(view, book)
         hideBottomNavigation()
-        goBack(navController)
+        goBack()
         registerBookReport(book)
     }
 
@@ -91,9 +90,9 @@ class BookFragment : Fragment() {
         bottomNavigation.visibility = View.GONE
     }
 
-    private fun goBack(navController: NavController) {
+    private fun goBack() {
         binding.btnGoBack.setOnClickListener {
-            navController.popBackStack()
+            findNavController().popBackStack()
         }
     }
 }
