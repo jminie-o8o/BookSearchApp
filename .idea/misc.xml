@@ -13,10 +13,12 @@
         <entry key="app/src/main/res/font/font.xml" value="0.465625" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.25" />
         <entry key="app/src/main/res/layout/cancel_fragment_dialog.xml" value="0.37318840579710144" />
+        <entry key="app/src/main/res/layout/cancel_modifying_fragment_dialog.xml" value="0.37318840579710144" />
         <entry key="app/src/main/res/layout/delete_fragment_dialog.xml" value="0.37318840579710144" />
         <entry key="app/src/main/res/layout/fragment_book.xml" value="0.33" />
         <entry key="app/src/main/res/layout/fragment_book_report.xml" value="0.33" />
         <entry key="app/src/main/res/layout/fragment_book_report_detail.xml" value="0.37318840579710144" />
+        <entry key="app/src/main/res/layout/fragment_book_report_modify.xml" value="0.37318840579710144" />
         <entry key="app/src/main/res/layout/fragment_favorite.xml" value="0.3582427536231884" />
         <entry key="app/src/main/res/layout/fragment_register_book_report.xml" value="0.37318840579710144" />
         <entry key="app/src/main/res/layout/fragment_search.xml" value="0.3582427536231884" />

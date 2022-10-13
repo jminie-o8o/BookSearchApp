@@ -6,7 +6,6 @@ import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
-import com.example.booksearchapp.data.model.Book
 import com.example.booksearchapp.data.model.BookReport
 import com.example.booksearchapp.databinding.ItemBookReportBinding
 

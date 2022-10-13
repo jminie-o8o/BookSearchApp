@@ -2,12 +2,10 @@ package com.example.booksearchapp.ui.view
 
 import android.annotation.SuppressLint
 import android.os.Bundle
-import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
-import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
@@ -69,7 +67,7 @@ class BookReportDetailFragment : Fragment() {
         binding.toolBar.setOnMenuItemClickListener {
             when(it.itemId) {
                 R.id.modify_book_report -> {
-                    Log.d("check", "modify click")
+                    findNavController().navigate(BookReportDetailFragmentDirections.actionFragmentBookReportDetailToFragmentBookReportModify(bookReport))
                     true
                 }
                 R.id.delete_book_report -> {

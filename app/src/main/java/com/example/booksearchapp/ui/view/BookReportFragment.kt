@@ -1,10 +1,10 @@
 package com.example.booksearchapp.ui.view
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.DividerItemDecoration
@@ -13,7 +13,6 @@ import com.example.booksearchapp.R
 import com.example.booksearchapp.databinding.FragmentBookReportBinding
 import com.example.booksearchapp.ui.adapter.BookReportPagingAdapter
 import com.example.booksearchapp.ui.adapter.BookSearchLoadStateAdapter
-import com.example.booksearchapp.ui.viewmodel.BookReportRegisterViewModel
 import com.example.booksearchapp.ui.viewmodel.BookReportViewModel
 import com.example.booksearchapp.util.collectLatestStateFlow
 import com.google.android.material.bottomnavigation.BottomNavigationView

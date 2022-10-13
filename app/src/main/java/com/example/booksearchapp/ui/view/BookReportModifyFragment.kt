@@ -17,23 +17,19 @@ import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import coil.load
 import com.example.booksearchapp.R
-import com.example.booksearchapp.data.model.Book
 import com.example.booksearchapp.data.model.BookReport
-import com.example.booksearchapp.databinding.FragmentRegisterBookReportBinding
-import com.example.booksearchapp.ui.viewmodel.BookReportRegisterViewModel
+import com.example.booksearchapp.databinding.FragmentBookReportModifyBinding
+import com.example.booksearchapp.ui.viewmodel.BookReportModifyViewModel
 import dagger.hilt.android.AndroidEntryPoint
-import java.text.SimpleDateFormat
-import java.util.Date
 
 @AndroidEntryPoint
-class BookReportRegisterFragment : Fragment() {
-    private var _binding: FragmentRegisterBookReportBinding? = null
+class BookReportModifyFragment : Fragment() {
+    private var _binding: FragmentBookReportModifyBinding? = null
     private val binding get() = _binding!!
 
-    private val args by navArgs<BookReportRegisterFragmentArgs>()
-    private val bookReportRegisterViewModel: BookReportRegisterViewModel by viewModels()
+    private val args by navArgs<BookReportModifyFragmentArgs>()
+    private val bookReportModifyViewModel: BookReportModifyViewModel by viewModels()
     private lateinit var pressBackCallback: OnBackPressedCallback
-
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
@@ -41,7 +37,7 @@ class BookReportRegisterFragment : Fragment() {
             override fun handleOnBackPressed() {
                 // 백 버튼을 눌렀을 때 로직을 여기서 구현
                 val layoutInflater = LayoutInflater.from(requireContext())
-                val view = layoutInflater.inflate(R.layout.cancel_fragment_dialog, null)
+                val view = layoutInflater.inflate(R.layout.cancel_modifying_fragment_dialog, null)
                 val alertDialog = AlertDialog.Builder(requireContext())
                     .setView(view)
                     .create()
@@ -65,52 +61,32 @@ class BookReportRegisterFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        _binding = FragmentRegisterBookReportBinding.inflate(inflater, container, false)
+        _binding = FragmentBookReportModifyBinding.inflate(inflater, container, false)
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val book = args.book
-        setBookInformation(book)
-        saveBookReport(book)
+        val bookReport = args.bookReport
+        setDefaultView(bookReport)
+        modifyBookReport(bookReport)
     }
 
     @SuppressLint("SetTextI18n")
-    private fun setBookInformation(book: Book) {
-        val author = book.authors.toString().removeSurrounding("[", "]")
-        val publisher = book.publisher
+    private fun setDefaultView(bookReport: BookReport) {
+        val author = bookReport.author.toString().removeSurrounding("[", "]")
+        val publisher = bookReport.publisher
         with(binding) {
-            ivArticleImage.load(book.thumbnail)
-            tvTitle.text = book.title
+            ivArticleImage.load(bookReport.thumbnail)
+            tvTitle.text = bookReport.title
             tvAuthor.text = "$author | $publisher"
+            etBookReportTitle.setText(bookReport.reportTitle)
+            etBookReportContents.setText(bookReport.reportContents)
         }
     }
 
-    private fun saveBookReport(book: Book) {
-        binding.btnRegisterBookReport.setOnClickListener {
-            val author = book.authors.toString().removeSurrounding("[", "]")
-            val bookReport = BookReport(
-                isbn = book.isbn,
-                thumbnail = book.thumbnail,
-                title = book.title,
-                author = author,
-                publisher = book.publisher,
-                reportTitle = binding.tlBookReportTitle.editText?.text?.toString() ?: "",
-                reportContents = binding.tlBookReportContents.editText?.text?.toString() ?: "",
-                date = getDate()
-            )
-            bookReportRegisterViewModel.saveBookReport(bookReport)
-            val action = BookReportRegisterFragmentDirections.actionRegisterBookReportFragmentToBookReportDetailFragment(bookReport)
-            findNavController().navigate(action)
-        }
-    }
-
-    @SuppressLint("SimpleDateFormat")
-    private fun getDate(): String {
-        val simpleDateFormat = SimpleDateFormat("yyyy-MM-dd")
-        val date = Date()
-        return simpleDateFormat.format(date)
+    private fun modifyBookReport(bookReport: BookReport) {
+        bookReportModifyViewModel.saveBookReport(bookReport)
     }
 
     override fun onDetach() {

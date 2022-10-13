@@ -1,6 +1,5 @@
 package com.example.booksearchapp.ui.view
 
-import android.annotation.SuppressLint
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
@@ -8,16 +7,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.Window
-import android.widget.Toast
 import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
-import com.example.booksearchapp.R
 import com.example.booksearchapp.data.model.BookReport
 import com.example.booksearchapp.databinding.DeleteFragmentDialogBinding
 import com.example.booksearchapp.ui.viewmodel.BookReportDetailViewModel
-import com.google.android.material.snackbar.Snackbar
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -54,7 +50,6 @@ class DeleteFragmentDialog : DialogFragment() {
         binding.tvBtnKeep.setOnClickListener { dismiss() }
     }
 
-    @SuppressLint("ShowToast")
     private fun deleteWrite(bookReport: BookReport) {
         binding.tvBtnDelete.setOnClickListener {
             bookReportDetailViewModel.deleteBookReport(bookReport)
