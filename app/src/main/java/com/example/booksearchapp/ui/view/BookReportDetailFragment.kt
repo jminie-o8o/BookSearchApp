@@ -2,8 +2,10 @@ package com.example.booksearchapp.ui.view
 
 import android.annotation.SuppressLint
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
+import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
@@ -41,6 +43,7 @@ class BookReportDetailFragment : Fragment() {
         setBookReport()
         hideBottomNavigation()
         goBack()
+        setToolBarMenuListener(bookReport)
     }
 
     private fun getBookReport(bookReport: BookReport) {
@@ -58,6 +61,23 @@ class BookReportDetailFragment : Fragment() {
                 binding.tvAuthor.text = "$author | $publisher"
                 binding.tvBookReportTitleDetail.text = bookReport.reportTitle
                 binding.tvBookReportContentsDetail.text = bookReport.reportContents
+            }
+        }
+    }
+
+    private fun setToolBarMenuListener(bookReport: BookReport) {
+        binding.toolBar.setOnMenuItemClickListener {
+            when(it.itemId) {
+                R.id.modify_book_report -> {
+                    Log.d("check", "modify click")
+                    true
+                }
+                R.id.delete_book_report -> {
+                    bookReportDetailViewModel.deleteBookReport(bookReport)
+                    findNavController().popBackStack()
+                    true
+                }
+                else -> false
             }
         }
     }

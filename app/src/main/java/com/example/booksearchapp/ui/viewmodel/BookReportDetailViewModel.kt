@@ -19,9 +19,11 @@ class BookReportDetailViewModel @Inject constructor(
     private val _bookReport = MutableStateFlow<BookReport?>(null)
     val bookReport: StateFlow<BookReport?> get() = _bookReport
 
-    fun getBookReportDetail(isbn: String) {
-        viewModelScope.launch(Dispatchers.IO) {
-            _bookReport.value = bookReportRepository.getBookReportDetail(isbn)
-        }
+    fun getBookReportDetail(isbn: String) = viewModelScope.launch(Dispatchers.IO) {
+        _bookReport.value = bookReportRepository.getBookReportDetail(isbn)
+    }
+
+    fun deleteBookReport(bookReport: BookReport) = viewModelScope.launch(Dispatchers.IO) {
+        bookReportRepository.deleteBookReport(bookReport)
     }
 }
