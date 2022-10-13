@@ -4,11 +4,15 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="app/src/main/res/drawable/custom_button_background.xml" value="0.352" />
+        <entry key="app/src/main/res/drawable/dialog_button_cancel.xml" value="0.352" />
+        <entry key="app/src/main/res/drawable/dialog_button_keep_write.xml" value="0.352" />
+        <entry key="app/src/main/res/drawable/dialog_shape.xml" value="0.352" />
         <entry key="app/src/main/res/drawable/ic_favorite_24.xml" value="0.2955" />
         <entry key="app/src/main/res/drawable/ic_icon_background.xml" value="0.352" />
         <entry key="app/src/main/res/drawable/ic_launcher_background.xml" value="0.352" />
         <entry key="app/src/main/res/font/font.xml" value="0.465625" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/cancel_fragment_dialog.xml" value="0.37318840579710144" />
         <entry key="app/src/main/res/layout/fragment_book.xml" value="0.33" />
         <entry key="app/src/main/res/layout/fragment_book_report.xml" value="0.33" />
         <entry key="app/src/main/res/layout/fragment_book_report_detail.xml" value="0.37318840579710144" />
