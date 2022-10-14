@@ -1,5 +1,6 @@
 package com.example.booksearchapp.ui.adapter
 
+import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.paging.PagingDataAdapter
@@ -41,11 +42,13 @@ class BookReportPagingAdapter :
     class BookReportViewHolder(
         private val binding: ItemBookReportBinding
     ) : RecyclerView.ViewHolder(binding.root) {
+        @SuppressLint("SetTextI18n")
         fun bind(bookReport: BookReport) {
             itemView.apply {
                 binding.ivArticleImage.load(bookReport.thumbnail)
                 binding.tvTitle.text = bookReport.reportTitle
-                binding.tvDatetime.text = bookReport.date
+                binding.tvDatetime.text = bookReport.date + " 에 작성됨"
+                binding.tvBookName.text = bookReport.title
             }
         }
     }
