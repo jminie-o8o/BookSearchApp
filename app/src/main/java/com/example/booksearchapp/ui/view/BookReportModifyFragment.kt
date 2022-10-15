@@ -86,7 +86,21 @@ class BookReportModifyFragment : Fragment() {
     }
 
     private fun modifyBookReport(bookReport: BookReport) {
-        bookReportModifyViewModel.saveBookReport(bookReport)
+        binding.btnRegisterBookReport.setOnClickListener {
+            val author = bookReport.author.toString().removeSurrounding("[", "]")
+            val bookReportModify = BookReport(
+                isbn = bookReport.isbn,
+                thumbnail = bookReport.thumbnail,
+                title = bookReport.title,
+                author = author,
+                publisher = bookReport.publisher,
+                reportTitle = binding.tlBookReportTitle.editText?.text?.toString() ?: "",
+                reportContents = binding.tlBookReportContents.editText?.text?.toString() ?: "",
+                date = bookReport.date
+            )
+            bookReportModifyViewModel.saveBookReport(bookReportModify)
+            findNavController().popBackStack()
+        }
     }
 
     override fun onDetach() {

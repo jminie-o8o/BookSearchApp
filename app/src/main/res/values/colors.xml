@@ -13,7 +13,7 @@
     <color name="week_black">#3c3c3c</color>
     <color name="white">#FFFFFFFF</color>
     <color name="week_white">#FAEBCD</color>
-    <color name="main_color">#FFAF0A</color>
-    <color name="main_color_deep">#FF8200</color>
+    <color name="main_color">#32A4FF</color>
+    <color name="main_color_deep">#1E90FF</color>
     <color name="red">#E81000</color>
 </resources>
