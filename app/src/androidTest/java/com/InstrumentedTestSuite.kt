@@ -1,7 +1,7 @@
 package com
 
-import com.example.booksearchapp.data.db.BookSearchDaoTest
-import com.example.booksearchapp.ui.view.MainActivityTest
+import com.stark.booksearchapp.data.db.BookSearchDaoTest
+import com.stark.booksearchapp.ui.view.MainActivityTest
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import org.junit.runner.RunWith
 import org.junit.runners.Suite

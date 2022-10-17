@@ -12,13 +12,13 @@ android {
     compileSdk = DefaultConfig.COMPILE_SDK_VERSION
 
     defaultConfig {
-        applicationId = "com.example.booksearchapp"
+        applicationId = "com.stark.booksearchapp"
         minSdk = DefaultConfig.MIN_SDK_VERSION
         targetSdk = DefaultConfig.TARGET_SDK_VERSION
         versionCode = DefaultConfig.VERSION_CODE
         versionName = DefaultConfig.VERSION_NAME
 
-        testInstrumentationRunner = "com.example.booksearchapp.HiltTestRunner"
+        testInstrumentationRunner = "com.stark.booksearchapp.HiltTestRunner"
     }
 
     buildTypes {

@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/fragment_favorite"
-        android:name="com.example.booksearchapp.ui.view.FavoriteFragment"
+        android:name="com.stark.booksearchapp.ui.view.FavoriteFragment"
         android:label="@string/favorite"
         tools:layout="@layout/fragment_favorite" >
         <action
@@ -20,12 +20,12 @@
     </fragment>
     <fragment
         android:id="@+id/fragment_setting"
-        android:name="com.example.booksearchapp.ui.view.SettingFragment"
+        android:name="com.stark.booksearchapp.ui.view.SettingFragment"
         android:label="@string/setting"
         tools:layout="@layout/fragment_setting" />
     <fragment
         android:id="@+id/fragment_search"
-        android:name="com.example.booksearchapp.ui.view.SearchFragment"
+        android:name="com.stark.booksearchapp.ui.view.SearchFragment"
         android:label="@string/search"
         tools:layout="@layout/fragment_search" >
         <action
@@ -38,12 +38,12 @@
     </fragment>
     <fragment
         android:id="@+id/fragment_book"
-        android:name="com.example.booksearchapp.ui.view.BookFragment"
+        android:name="com.stark.booksearchapp.ui.view.BookFragment"
         android:label="@string/book_info"
         tools:layout="@layout/fragment_book" >
         <argument
             android:name="book"
-            app:argType="com.example.booksearchapp.data.model.Book" />
+            app:argType="com.stark.booksearchapp.data.model.Book" />
         <action
             android:id="@+id/action_fragment_book_to_registerBookReportFragment"
             app:destination="@id/fragment_register_book_report"
@@ -54,7 +54,7 @@
     </fragment>
     <fragment
         android:id="@+id/fragment_book_report"
-        android:name="com.example.booksearchapp.ui.view.BookReportFragment"
+        android:name="com.stark.booksearchapp.ui.view.BookReportFragment"
         android:label="fragment_book_report"
         tools:layout="@layout/fragment_book_report" >
         <action
@@ -67,12 +67,12 @@
     </fragment>
     <fragment
         android:id="@+id/fragment_register_book_report"
-        android:name="com.example.booksearchapp.ui.view.BookReportRegisterFragment"
+        android:name="com.stark.booksearchapp.ui.view.BookReportRegisterFragment"
         android:label="fragment_register_book_report"
         tools:layout="@layout/fragment_register_book_report" >
         <argument
             android:name="book"
-            app:argType="com.example.booksearchapp.data.model.Book" />
+            app:argType="com.stark.booksearchapp.data.model.Book" />
         <action
             android:id="@+id/action_registerBookReportFragment_to_bookReportDetailFragment"
             app:destination="@id/fragment_book_report_detail"
@@ -85,12 +85,12 @@
     </fragment>
     <fragment
         android:id="@+id/fragment_book_report_detail"
-        android:name="com.example.booksearchapp.ui.view.BookReportDetailFragment"
+        android:name="com.stark.booksearchapp.ui.view.BookReportDetailFragment"
         android:label="fragment_book_report_detail"
         tools:layout="@layout/fragment_book_report_detail" >
         <argument
             android:name="bookReport"
-            app:argType="com.example.booksearchapp.data.model.BookReport" />
+            app:argType="com.stark.booksearchapp.data.model.BookReport" />
         <action
             android:id="@+id/action_bookReportDetailFragment_to_fragment_book_report"
             app:destination="@id/fragment_book_report"
@@ -111,11 +111,11 @@
     </fragment>
     <fragment
         android:id="@+id/fragment_book_report_modify"
-        android:name="com.example.booksearchapp.ui.view.BookReportModifyFragment"
+        android:name="com.stark.booksearchapp.ui.view.BookReportModifyFragment"
         android:label="fragment_book_report_modify"
         tools:layout="@layout/fragment_book_report_modify" >
         <argument
             android:name="bookReport"
-            app:argType="com.example.booksearchapp.data.model.BookReport" />
+            app:argType="com.stark.booksearchapp.data.model.BookReport" />
     </fragment>
 </navigation>
