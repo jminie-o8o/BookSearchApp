@@ -1,8 +1,8 @@
 package com.stark.booksearchapp.data.db
 
 import androidx.test.filters.SmallTest
-import com.stark.booksearchapp.data.model.Book
 import com.google.common.truth.Truth.assertThat
+import com.stark.booksearchapp.data.model.Book
 import dagger.hilt.android.testing.HiltAndroidRule
 import dagger.hilt.android.testing.HiltAndroidTest
 import kotlinx.coroutines.ExperimentalCoroutinesApi

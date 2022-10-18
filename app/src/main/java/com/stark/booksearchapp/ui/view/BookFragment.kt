@@ -10,12 +10,12 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
+import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.google.android.material.snackbar.Snackbar
 import com.stark.booksearchapp.R
 import com.stark.booksearchapp.data.model.Book
 import com.stark.booksearchapp.databinding.FragmentBookBinding
 import com.stark.booksearchapp.ui.viewmodel.BookViewModel
-import com.google.android.material.bottomnavigation.BottomNavigationView
-import com.google.android.material.snackbar.Snackbar
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint

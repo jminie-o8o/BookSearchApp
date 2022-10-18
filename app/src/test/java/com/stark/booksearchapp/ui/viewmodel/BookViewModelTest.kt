@@ -1,9 +1,9 @@
 package com.stark.booksearchapp.ui.viewmodel
 
 import androidx.test.filters.MediumTest
+import com.google.common.truth.Truth
 import com.stark.booksearchapp.data.model.Book
 import com.stark.booksearchapp.data.repository.FakeBookSearchRepository
-import com.google.common.truth.Truth
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.test.runTest

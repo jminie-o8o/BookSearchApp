@@ -13,6 +13,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.paging.LoadState
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.stark.booksearchapp.R
 import com.stark.booksearchapp.databinding.FragmentSearchBinding
 import com.stark.booksearchapp.ui.adapter.BookSearchLoadStateAdapter
@@ -20,7 +21,6 @@ import com.stark.booksearchapp.ui.adapter.BookSearchPagingAdapter
 import com.stark.booksearchapp.ui.viewmodel.SearchViewModel
 import com.stark.booksearchapp.util.Constants.SEARCH_BOOKS_TIME_DELAY
 import com.stark.booksearchapp.util.collectLatestStateFlow
-import com.google.android.material.bottomnavigation.BottomNavigationView
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint

@@ -11,7 +11,8 @@ class FakeBookReportRepository : BookReportRepository {
     private val reportItems = mutableListOf<BookReport>()
 
     override suspend fun getBookReportDetail(isbn: String): BookReport {
-        TODO("Not yet implemented")
+        return BookReport(isbn, "b", "c", "d",
+            "e", "f", "g", "h")
     }
 
     override suspend fun insertBookReport(bookReport: BookReport) {

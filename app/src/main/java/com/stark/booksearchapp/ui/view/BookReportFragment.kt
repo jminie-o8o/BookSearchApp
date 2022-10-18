@@ -9,13 +9,13 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.stark.booksearchapp.R
 import com.stark.booksearchapp.databinding.FragmentBookReportBinding
 import com.stark.booksearchapp.ui.adapter.BookReportPagingAdapter
 import com.stark.booksearchapp.ui.adapter.BookSearchLoadStateAdapter
 import com.stark.booksearchapp.ui.viewmodel.BookReportViewModel
 import com.stark.booksearchapp.util.collectLatestStateFlow
-import com.google.android.material.bottomnavigation.BottomNavigationView
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint

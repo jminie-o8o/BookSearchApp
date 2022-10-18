@@ -26,4 +26,11 @@ class BookReportDetailViewModel @Inject constructor(
     fun deleteBookReport(bookReport: BookReport) = viewModelScope.launch(Dispatchers.IO) {
         bookReportRepository.deleteBookReport(bookReport)
     }
+
+    // For Test
+    val bookReportDetailList = mutableListOf<BookReport>()
+
+    fun getBookReportDetailTest() = viewModelScope.launch(Dispatchers.IO) {
+        bookReportDetailList.add(bookReportRepository.getBookReportDetail("a"))
+    }
 }

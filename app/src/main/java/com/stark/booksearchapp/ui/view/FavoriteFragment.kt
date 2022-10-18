@@ -11,13 +11,13 @@ import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.google.android.material.snackbar.Snackbar
 import com.stark.booksearchapp.R
 import com.stark.booksearchapp.databinding.FragmentFavoriteBinding
 import com.stark.booksearchapp.ui.adapter.BookSearchPagingAdapter
 import com.stark.booksearchapp.ui.viewmodel.FavoriteViewModel
 import com.stark.booksearchapp.util.collectLatestStateFlow
-import com.google.android.material.bottomnavigation.BottomNavigationView
-import com.google.android.material.snackbar.Snackbar
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint

@@ -14,12 +14,12 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import coil.load
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.stark.booksearchapp.R
 import com.stark.booksearchapp.data.model.BookReport
 import com.stark.booksearchapp.databinding.FragmentBookReportDetailBinding
 import com.stark.booksearchapp.ui.viewmodel.BookReportDetailViewModel
 import com.stark.booksearchapp.util.collectStateFlow
-import com.google.android.material.bottomnavigation.BottomNavigationView
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint

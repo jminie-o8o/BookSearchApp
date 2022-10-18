@@ -18,13 +18,13 @@ import androidx.test.ext.junit.rules.ActivityScenarioRule
 import androidx.test.filters.LargeTest
 import androidx.test.filters.SmallTest
 import com.google.common.truth.Truth.assertThat
-import org.hamcrest.Matcher
-import org.junit.Rule
-import org.junit.Test
 import com.stark.booksearchapp.R
 import com.stark.booksearchapp.ui.adapter.BookSearchAdapter
 import dagger.hilt.android.testing.HiltAndroidRule
 import dagger.hilt.android.testing.HiltAndroidTest
+import org.hamcrest.Matcher
+import org.junit.Rule
+import org.junit.Test
 
 @HiltAndroidTest
 class MainActivityTest {
