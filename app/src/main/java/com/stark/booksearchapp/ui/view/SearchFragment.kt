@@ -1,7 +1,6 @@
 package com.stark.booksearchapp.ui.view
 
 import android.os.Bundle
-import android.text.Editable
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -19,7 +18,6 @@ import com.stark.booksearchapp.databinding.FragmentSearchBinding
 import com.stark.booksearchapp.ui.adapter.BookSearchLoadStateAdapter
 import com.stark.booksearchapp.ui.adapter.BookSearchPagingAdapter
 import com.stark.booksearchapp.ui.viewmodel.SearchViewModel
-import com.stark.booksearchapp.util.Constants.SEARCH_BOOKS_TIME_DELAY
 import com.stark.booksearchapp.util.collectLatestStateFlow
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -42,8 +40,10 @@ class SearchFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setupRecyclerView()
-        searchBooks()
+//        searchBooks()
         setupLoadState()
+        listenSearchWordChange()
+        updateSearchWord()
         collectLatestStateFlow(searchViewModel.searchPagingResult) {
             bookSearchAdapter.submitData(it)
         }
@@ -66,21 +66,15 @@ class SearchFragment : Fragment() {
         }
     }
 
-    private fun searchBooks() {
-        var startTime = System.currentTimeMillis()
-        var endTime: Long
+    private fun listenSearchWordChange() {
+        binding.etSearch.addTextChangedListener { text ->
+            if (text != null) searchViewModel.handleSearchWord(text.toString())
+        }
+    }
 
-        binding.etSearch.addTextChangedListener { text: Editable? ->
-            endTime = System.currentTimeMillis()
-            if (endTime - startTime >= SEARCH_BOOKS_TIME_DELAY) {
-                text?.let {
-                    val query = it.toString().trim()
-                    if (query.isNotEmpty()) {
-                        searchViewModel.searchBooksPaging(query)
-                    }
-                }
-            }
-            startTime = endTime
+    private fun updateSearchWord() {
+        collectLatestStateFlow(searchViewModel.searchWord) { query ->
+            searchViewModel.searchBooksPaging(query)
         }
     }
 
