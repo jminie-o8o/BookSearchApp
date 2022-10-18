@@ -33,16 +33,4 @@ class BookReportRegisterViewModelTest {
         val getBookReport = viewModel.bookReportsForTest.first()
         assertThat(getBookReport).contains(saveBookReport)
     }
-
-    @Test
-    @ExperimentalCoroutinesApi
-    fun delete_book_report_test() = runTest {
-        val saveBookReport = BookReport("a", "b", "c", "d",
-            "e", "f", "g", "h")
-
-        viewModel.saveBookReport(saveBookReport)
-
-        val getBookReport = viewModel.bookReportsForTest.first()
-        assertThat(getBookReport).contains(saveBookReport)
-    }
 }
