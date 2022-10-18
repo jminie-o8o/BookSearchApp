@@ -22,8 +22,8 @@ interface BookReportDao {
     suspend fun deleteBookReport(bookReport: BookReport)
 
     @Query("SELECT * FROM bookReports")
-    fun getFavoriteBooks(): Flow<List<BookReport>>
+    fun getBookReports(): Flow<List<BookReport>>
 
     @Query("SELECT * FROM bookReports")
-    fun getFavoritePagingBooks(): PagingSource<Int, BookReport>
+    fun getBookReportsPaging(): PagingSource<Int, BookReport>
 }

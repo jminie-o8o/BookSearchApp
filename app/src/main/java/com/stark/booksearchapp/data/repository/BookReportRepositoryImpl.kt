@@ -25,12 +25,12 @@ class BookReportRepositoryImpl @Inject constructor(
     }
 
     override fun getBookReport(): Flow<List<BookReport>> {
-        return db.bookReportDao().getFavoriteBooks()
+        return db.bookReportDao().getBookReports()
     }
 
     override fun getBookReportPaging(): Flow<PagingData<BookReport>> {
         val pagingFactory = {
-            db.bookReportDao().getFavoritePagingBooks()
+            db.bookReportDao().getBookReportsPaging()
         }
 
         return Pager(

@@ -58,8 +58,8 @@ dependencies {
 
     // 로컬 테스트용
     testImplementation(Testing.JUNIT4)
-    testImplementation(Testing.TRUTH)
-    testImplementation(Testing.RUNNER)
+    testImplementation(Testing.TRUTH) // Assertion 을 더 읽기 용이하게 해줌
+    testImplementation(Testing.RUNNER) // 테스트를 크기에 따라서 필터링할 수 있게 해줌
     testImplementation(Testing.ROBOLECTRIC)
     testImplementation(Testing.TRUTH_CORE)
     testImplementation(Testing.TRUTH_EXT)
