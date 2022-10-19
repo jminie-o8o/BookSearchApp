@@ -2,6 +2,7 @@ package com.stark.booksearchapp.di
 
 import android.content.Context
 import androidx.room.Room
+import com.stark.booksearchapp.data.db.BookReportDatabase
 import com.stark.booksearchapp.data.db.BookSearchDatabase
 import dagger.Module
 import dagger.Provides
@@ -20,8 +21,8 @@ object TestAppModule {
     // Hilt 가 BookSearchDatabase 를 주입해야 할 곳에 어떤 것을 주입해야 할 지 헷갈리게 된다.
     // 따라서 이를 방지하기 위해 @Named 어노테이션을 통해 Hilt 가 객체를 구분할 수 있도록 해준다.
     @Provides
-    @Named("test_db")
-    fun provideInMemoryDb(@ApplicationContext context: Context): BookSearchDatabase =
+    @Named("test_book_search_db")
+    fun provideInMemoryBookSearchDb(@ApplicationContext context: Context): BookSearchDatabase =
         // database 는 inMemoryDatabaseBuilder 를 사용해서 메모리 안에서만 생성하고 테스트가 끝나면 파괴
         // 또한 Room 은 ANR 을 방지하기 위해 Main 스레드에서 쿼리를 금지하고 있는데
         // 데이터베이스에서의 쿼리를 멀티스레드에서 수행하면 결과를 예측할 수 없기 때문에
@@ -29,5 +30,13 @@ object TestAppModule {
         Room.inMemoryDatabaseBuilder(
             context,
             BookSearchDatabase::class.java
+        ).allowMainThreadQueries().build()
+
+    @Provides
+    @Named("test_book_report_db")
+    fun provideInMemoryBookReportDb(@ApplicationContext context: Context): BookReportDatabase =
+        Room.inMemoryDatabaseBuilder(
+            context,
+            BookReportDatabase::class.java
         ).allowMainThreadQueries().build()
 }

@@ -21,7 +21,7 @@ import javax.inject.Named
 class BookSearchDaoTest {
 
     @Inject
-    @Named("test_db")
+    @Named("test_book_search_db")
     lateinit var database: BookSearchDatabase
     private lateinit var dao: BookSearchDao
 

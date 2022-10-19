@@ -6,27 +6,34 @@ import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.filters.SmallTest
 import com.google.common.truth.Truth.assertThat
 import com.stark.booksearchapp.data.model.BookReport
+import dagger.hilt.android.testing.HiltAndroidRule
+import dagger.hilt.android.testing.HiltAndroidTest
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.test.runTest
 import org.junit.After
 import org.junit.Before
+import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
+import javax.inject.Inject
+import javax.inject.Named
 
-@RunWith(AndroidJUnit4::class)
+@HiltAndroidTest
 @SmallTest
 class BookReportDaoTest {
 
-    private lateinit var database: BookReportDatabase
+    @Inject
+    @Named("test_book_report_db")
+    lateinit var database: BookReportDatabase
     private lateinit var dao: BookReportDao
+
+    @get:Rule
+    var hiltRule = HiltAndroidRule(this)
 
     @Before
     fun setUp() {
-        database = Room.inMemoryDatabaseBuilder(
-            ApplicationProvider.getApplicationContext(),
-            BookReportDatabase::class.java
-        ).allowMainThreadQueries().build()
+        hiltRule.inject()
         dao = database.bookReportDao()
     }
 
