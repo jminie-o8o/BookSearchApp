@@ -19,6 +19,7 @@ import androidx.test.filters.LargeTest
 import androidx.test.filters.SmallTest
 import com.google.common.truth.Truth.assertThat
 import com.stark.booksearchapp.R
+import com.stark.booksearchapp.ui.adapter.BookReportPagingAdapter
 import com.stark.booksearchapp.ui.adapter.BookSearchAdapter
 import dagger.hilt.android.testing.HiltAndroidRule
 import dagger.hilt.android.testing.HiltAndroidTest
@@ -49,7 +50,7 @@ class MainActivityTest {
         // 1. SearchFragment
         // 1-1. "NO Result" 가 잘 출력되는지 확인
         onView(withId(R.id.tv_emptylist))
-            .check(matches(withText("No result")))
+            .check(matches(withText("원하는 책을 검색해보세요:)")))
         // 1-2. 검색어로 "android" 입력
         onView(withId(R.id.et_search))
             .perform(typeText("android"))
@@ -81,6 +82,29 @@ class MainActivityTest {
         // 2-3. 첫번째 아이템 슬라이드하여 삭제
         onView(withId(R.id.rv_favorite_books))
             .perform(actionOnItemAtPosition<BookSearchAdapter.BookSearchViewHolder>(0 , swipeLeft()))
+    }
+
+    @Test
+    @LargeTest
+    fun from_SearchFragment_to_BookReportFragment_Ui_Operation() {
+        // 1. BookReportFragment
+        // 1-1. FavoriteFragment 로 이동
+        onView(withId(R.id.fragment_book_report))
+            .perform(click())
+        // 1-2. 리사이클러뷰 표시 확인
+        onView(withId(R.id.rv_book_report))
+            .check(matches(isDisplayed()))
+        onView(isRoot()).perform(waitFor(1000))
+        // 1-3. 첫 번째 반환 값 클릭
+        onView(withId(R.id.rv_book_report))
+            .perform(actionOnItemAtPosition<BookReportPagingAdapter.BookReportViewHolder>(0, click()))
+        onView(isRoot()).perform(waitFor(1000))
+        // 1-4 첫 번째 독후감 제목 일치여부 확인
+        onView(withId(R.id.tv_book_report_title_detail))
+            .check(matches(withText("title")))
+        // 1-4 첫 번째 독후감 내용 일치여부 확인
+        onView(withId(R.id.tv_book_report_contents_detail))
+            .check(matches(withText("contents")))
     }
 
     // 검색어로 "android" 를 입력해서 네트워크로 가져오는데 시간이 걸리기 때문에
