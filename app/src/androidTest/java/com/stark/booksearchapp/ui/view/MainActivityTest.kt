@@ -131,59 +131,26 @@ class MainActivityTest {
     @Test
     @LargeTest
     fun from_SearchFragment_to_BookReportFragment_Ui_Operation() {
-        // 1. SearchFragment
-        // 1-1. 검색어로 "android" 입력
-        onView(withId(R.id.et_search))
-            .perform(typeText("android"))
-        onView(isRoot()).perform(waitFor(3000))
-        // 1-2. 리사이클러뷰 표시 확인
-        onView(withId(R.id.rv_search_result))
-            .check(matches(isDisplayed()))
-        // 1-3. 첫 번째 반환 값 클릭
-        onView(withId(R.id.rv_search_result))
-            .perform(actionOnItemAtPosition<BookSearchAdapter.BookSearchViewHolder>(0, click()))
-        onView(isRoot()).perform(waitFor(1000))
-
-        // 2. RegisterBookReportFragment
-        // 2-1. 독후감 쓰러가기 버튼 클릭
-        onView(withId(R.id.btn_register_book_report))
-            .perform(click())
-        // 2-2. 독후감 제목 작성
-        onView(withId(R.id.et_book_report_title))
-            .perform(typeText("title"))
-        // 2-3. 독후감 내용 작성
-        onView(withId(R.id.et_book_report_contents))
-            .perform(typeText("contents"))
-        closeSoftKeyboard()
-        // 2-4. 독후감 등록 버튼 클릭
-        onView(withId(R.id.btn_register_book_report))
-            .perform(click())
-
-        // 3. BookReportDetailFragment
-        // 3-1. 독후감 제목 일치 확인
-        onView(withId(R.id.tv_book_report_title_detail))
-            .check(matches(withText("title")))
-        // 3-2. 독후감 내용 일치 확인
-        onView(withId(R.id.tv_book_report_contents_detail))
-            .check(matches(withText("contents")))
+        // 책 검색과 독후감 등록 Test 를 그대로 가져와서 재활용
+        from_SearchFragment_to_BookReportRegisterFragment_Ui_Operation()
         pressBack()
 
-        // 4. BookReportFragment
-        // 4-1. BookReportFragment 로 이동
+        // 1. BookReportFragment
+        // 1-1. BookReportFragment 로 이동
         onView(withId(R.id.fragment_book_report))
             .perform(click())
-        // 4-2. 리사이클러뷰 표시 확인
+        // 1-2. 리사이클러뷰 표시 확인
         onView(withId(R.id.rv_book_report))
             .check(matches(isDisplayed()))
         onView(isRoot()).perform(waitFor(1000))
-        // 4-3. 첫 번째 반환 값 클릭
+        // 1-3. 첫 번째 반환 값 클릭
         onView(withId(R.id.rv_book_report))
             .perform(actionOnItemAtPosition<BookReportPagingAdapter.BookReportViewHolder>(0, click()))
         onView(isRoot()).perform(waitFor(1000))
-        // 4-4. 첫 번째 독후감 제목 일치여부 확인
+        // 1-4. 첫 번째 독후감 제목 일치여부 확인
         onView(withId(R.id.tv_book_report_title_detail))
             .check(matches(withText("title")))
-        // 4-5. 첫 번째 독후감 내용 일치여부 확인
+        // 1-5. 첫 번째 독후감 내용 일치여부 확인
         onView(withId(R.id.tv_book_report_contents_detail))
             .check(matches(withText("contents")))
     }
