@@ -1,6 +1,7 @@
 package com.stark.booksearchapp.ui.view
 
 import android.view.View
+import androidx.test.espresso.Espresso.closeSoftKeyboard
 import androidx.test.espresso.Espresso.onView
 import androidx.test.espresso.Espresso.pressBack
 import androidx.test.espresso.UiController
@@ -82,6 +83,46 @@ class MainActivityTest {
         // 2-3. 첫번째 아이템 슬라이드하여 삭제
         onView(withId(R.id.rv_favorite_books))
             .perform(actionOnItemAtPosition<BookSearchAdapter.BookSearchViewHolder>(0 , swipeLeft()))
+    }
+
+    @Test
+    @LargeTest
+    fun from_SearchFragment_to_BookReportRegisterFragment_Ui_Operation() {
+        // 1. SearchFragment
+        // 1-1. 검색어로 "android" 입력
+        onView(withId(R.id.et_search))
+            .perform(typeText("android"))
+        onView(isRoot()).perform(waitFor(3000))
+        // 1-2. 리사이클러뷰 표시 확인
+        onView(withId(R.id.rv_search_result))
+            .check(matches(isDisplayed()))
+        // 1-3. 첫 번째 반환 값 클릭
+        onView(withId(R.id.rv_search_result))
+            .perform(actionOnItemAtPosition<BookSearchAdapter.BookSearchViewHolder>(0, click()))
+        onView(isRoot()).perform(waitFor(1000))
+
+        // 2. RegisterBookReportFragment
+        // 2-1. 독후감 쓰러가기 버튼 클릭
+        onView(withId(R.id.btn_register_book_report))
+            .perform(click())
+        // 2-2. 독후감 제목 작성
+        onView(withId(R.id.et_book_report_title))
+            .perform(typeText("title"))
+        // 2-3. 독후감 내용 작성
+        onView(withId(R.id.et_book_report_contents))
+            .perform(typeText("contents"))
+        closeSoftKeyboard()
+        // 2-4. 독후감 등록 버튼 클릭
+        onView(withId(R.id.btn_register_book_report))
+            .perform(click())
+
+        // 3. BookReportDetailFragment
+        // 3-1. 독후감 제목 일치 확인
+        onView(withId(R.id.tv_book_report_title_detail))
+            .check(matches(withText("title")))
+        // 3-2. 독후감 내용 일치 확인
+        onView(withId(R.id.tv_book_report_contents_detail))
+            .check(matches(withText("contents")))
     }
 
     @Test
