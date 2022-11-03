@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">BookSearchApp</string>
+    <string name="app_name">하루독후감</string>
     <string name="search">Search Books</string>
     <string name="favorite">favorite Books</string>
     <string name="setting">Setting</string>
