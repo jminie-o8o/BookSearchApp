@@ -128,6 +128,8 @@ dependencies {
 
     // WorkManager
     implementation(Dependencies.WORKMANGER)
+    implementation(Dependencies.WORK)
+
 
     // Hilt
     implementation(Dependencies.DAGGER_HILT)

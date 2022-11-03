@@ -49,6 +49,7 @@ object Dependencies {
     const val PAGING = "androidx.paging:paging-runtime-ktx:${Versions.PAGING}"
 
     const val WORKMANGER = "androidx.work:work-runtime-ktx:${Versions.WORKMANGER}"
+    const val WORK = "androidx.work:work-runtime-ktx:${Versions.WORK}"
 
     const val DAGGER_HILT = "com.google.dagger:hilt-android:${Versions.HILT}"
     const val DAGGER_HILT_KAPT = "com.google.dagger:hilt-compiler:${Versions.HILT}"

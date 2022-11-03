@@ -84,7 +84,7 @@ class AlarmFragment : Fragment() {
                 requireContext(),
                 M_ALARM_REQUEST_CODE,
                 Intent(requireContext(), AlarmReceiver::class.java),
-                PendingIntent.FLAG_NO_CREATE
+                PendingIntent.FLAG_IMMUTABLE
             ) // 있으면 가져오고 없으면 안만든다. (null)
 
             if ((pendingIntent == null) and alarmModel.onOff) {
