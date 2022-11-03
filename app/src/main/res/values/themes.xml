@@ -26,4 +26,8 @@
     <style name="MyTimePickerTheme" parent="android:Widget.Material.TimePicker">
         <item name="android:timePickerMode">spinner</item>
     </style>
+
+    <style name="Theme.BookSearchApp.Splash" >
+        <item name="android:windowBackground">@drawable/background_splash_screen</item>
+    </style>
 </resources>
