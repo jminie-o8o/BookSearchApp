@@ -14,4 +14,12 @@
     <string name="delete">독후감 삭제하기</string>
     <string name="change_time">시간 재설정</string>
     <string name="on_alarm">알람 켜기</string>
+    <string name="set_alarm">알람 켜기</string>
+    <string name="go_set_alarm">알람 설정하러 가기</string>
+    <string name="arrange">정렬</string>
+    <string name="arrange_accuracy">정확도순</string>
+    <string name="arrange_new">최신순</string>
+    <string name="cache_policy">캐시정책</string>
+    <string name="cache_policy_content">자동으로 캐시 삭제 활성화</string>
+    <string name="cache_status">상태</string>
 </resources>

@@ -8,6 +8,8 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.stark.booksearchapp.R
 import com.stark.booksearchapp.databinding.FragmentSettingBinding
 import com.stark.booksearchapp.ui.viewmodel.SettingsViewModel
@@ -37,6 +39,8 @@ class SettingFragment : Fragment() {
         saveSettings()
         loadSettings()
         showWorkStatus()
+        goToAlarmFragment()
+        showBottomNavigation()
     }
 
     private fun saveSettings() {
@@ -89,6 +93,18 @@ class SettingFragment : Fragment() {
                 }
             }
         }
+    }
+
+    private fun goToAlarmFragment() {
+        binding.btnSettingAlarm.setOnClickListener {
+            val action = SettingFragmentDirections.actionFragmentSettingToAlarmFragment()
+            findNavController().navigate(action)
+        }
+    }
+
+    private fun showBottomNavigation() {
+        val bottomNavigation = (activity as MainActivity).findViewById<BottomNavigationView>(R.id.bottom_navigation_view)
+        bottomNavigation.visibility = View.VISIBLE
     }
 
     override fun onDestroyView() {

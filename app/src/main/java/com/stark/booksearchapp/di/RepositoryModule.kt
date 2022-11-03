@@ -1,5 +1,7 @@
 package com.stark.booksearchapp.di
 
+import com.stark.booksearchapp.data.repository.AlarmRepository
+import com.stark.booksearchapp.data.repository.AlarmRepositoryImpl
 import com.stark.booksearchapp.data.repository.BookReportRepository
 import com.stark.booksearchapp.data.repository.BookReportRepositoryImpl
 import com.stark.booksearchapp.data.repository.BookSearchRepository
@@ -25,4 +27,10 @@ abstract class RepositoryModule {
     abstract fun bindBookReportRepository(
         bookReportRepositoryImpl: BookReportRepositoryImpl,
     ): BookReportRepository
+
+    @Singleton
+    @Binds
+    abstract fun bindAlarmRepository(
+        alarmRepositoryImpl: AlarmRepositoryImpl,
+    ): AlarmRepository
 }
