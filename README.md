@@ -4,7 +4,9 @@
 </br>
 
 ## 🤖 Google Play 스토어
-<p align="left"><img src="https://assets.website-files.com/5e3443aad4897d025d7bde79/5eac3a0d9e363e439a9839de_Google_Badge_US-White.png" width="240" height="80"/></p>
+
+[![텍스트](https://user-images.githubusercontent.com/79504043/199650037-59fadea7-77b8-429a-b487-8a87742320ab.png)](https://play.google.com/store/apps/details?id=com.stark.booksearchapp)
+
 
 </br>
 
@@ -240,6 +242,8 @@ fun <T> Fragment.collectLatestStateFlow(flow: Flow<T>, collector: suspend (T) ->
     }
 }
 ```
+
+</br>
 
 ### 📌 버전 1.1 추가
 
