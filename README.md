@@ -37,7 +37,7 @@
 | ![](https://user-images.githubusercontent.com/79504043/197685470-a81b6f61-7a4e-4c2d-a6b9-8b08d4469bea.gif) | ![](https://user-images.githubusercontent.com/79504043/197686020-802409e5-3bd4-49df-9e7f-b4e65e313989.gif) | ![](https://user-images.githubusercontent.com/79504043/197703976-29d05793-b255-4283-8f27-163f194a3ea2.gif) | 
 
 
-| 관심목록 등록 및 삭제 | 검색 정렬 변경 및 캐시 비우기 | 독후감 알람 설정 |
+| 즐겨찾기 등록 및 삭제 | 검색 정렬 설정 및 캐시 비우기 | 알람 설정 |
 |:--------:|:--------:|:--------:|
 | ![](https://user-images.githubusercontent.com/79504043/197687493-2ae69315-3ed0-4877-bed0-8684e8d12567.gif) | ![](https://user-images.githubusercontent.com/79504043/197687561-039e9f8a-1756-4172-8f5a-28951e9fca07.gif) | ![](https://user-images.githubusercontent.com/79504043/199972836-955cc295-f171-4f7f-92fa-ec7015270c66.gif) |
 
