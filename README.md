@@ -23,6 +23,7 @@
 - 관심있는 책 추가 / 삭제
 - 검색 정렬 선택
 - 앱 내 캐시 정리
+- 독후감 알람 설정 (버전 1.3에 추가)
 
 </br>
 
@@ -31,11 +32,18 @@
 하루독후감의 실제 동작화면 입니다.📖
 </Blockquote>
 
-| 책 검색 | 독후감 등록 | 독후감 수정 및 삭제 | 관심목록 등록 및 삭제 | 검색 정렬 변경 및 캐시 비우기 |
-|:--------:|:--------:|:--------:|:--------:|:--------:|
-| ![](https://user-images.githubusercontent.com/79504043/197685470-a81b6f61-7a4e-4c2d-a6b9-8b08d4469bea.gif) | ![](https://user-images.githubusercontent.com/79504043/197686020-802409e5-3bd4-49df-9e7f-b4e65e313989.gif) | ![](https://user-images.githubusercontent.com/79504043/197703976-29d05793-b255-4283-8f27-163f194a3ea2.gif) | ![](https://user-images.githubusercontent.com/79504043/197687493-2ae69315-3ed0-4877-bed0-8684e8d12567.gif) | ![](https://user-images.githubusercontent.com/79504043/197687561-039e9f8a-1756-4172-8f5a-28951e9fca07.gif) |
+| 책 검색 | 독후감 등록 | 독후감 수정 및 삭제 | 
+|:--------:|:--------:|:--------:|
+| ![](https://user-images.githubusercontent.com/79504043/197685470-a81b6f61-7a4e-4c2d-a6b9-8b08d4469bea.gif) | ![](https://user-images.githubusercontent.com/79504043/197686020-802409e5-3bd4-49df-9e7f-b4e65e313989.gif) | ![](https://user-images.githubusercontent.com/79504043/197703976-29d05793-b255-4283-8f27-163f194a3ea2.gif) | 
+
+
+| 관심목록 등록 및 삭제 | 검색 정렬 변경 및 캐시 비우기 | 독후감 알람 설정 |
+|:--------:|:--------:|:--------:|
+| ![](https://user-images.githubusercontent.com/79504043/197687493-2ae69315-3ed0-4877-bed0-8684e8d12567.gif) | ![](https://user-images.githubusercontent.com/79504043/197687561-039e9f8a-1756-4172-8f5a-28951e9fca07.gif) | ![](https://user-images.githubusercontent.com/79504043/199972836-955cc295-f171-4f7f-92fa-ec7015270c66.gif) |
+
 
 </br>
+
 
 ## 😎 기술적 고민
 
@@ -54,9 +62,9 @@
 ### 🤷‍♂️ 테스트 자동화의 필요성?
 
 - 수동 테스트
-    - 빌드시간 증가, 비용 증가
+  - 빌드시간 증가, 비용 증가
 - 자동 테스트
-    - 개발시간 감소, 비용 절감, 견고한 구조
+  - 개발시간 감소, 비용 절감, 견고한 구조
 
 앱을 개발하면 정상적으로 작동하는지 테스트를 수행해야합니다. 하루독후감을 예로 들면 Room 데이터베이스에 독후감과 관심목록이 정상적으로 저장이 되는지 확인하기 위해 애뮬레이터나 단말기를 실행하여
 직접 결과를 확인하는 식의 테스트를 진행합니다. 문제가 있다면 로그를 찍어가며 문제가 무엇인지 파악하고 수정하고 다시 테스트 하는 과정을 반복합니다.
@@ -98,17 +106,17 @@ fun x1_multiplyBy_2() {
 ### 📌 테스트 대상 항목
 
 - **단위 테스트 대상**
-    - ViewModel
-    - 데이터 레이어 (Data Layer)
+  - ViewModel
+  - 데이터 레이어 (Data Layer)
 
 - **UI 테스트**
-    - 스크린 UI
-    - 유저 플로우 (User Flow)
-    - 네비게이션 (Navigation)
+  - 스크린 UI
+  - 유저 플로우 (User Flow)
+  - 네비게이션 (Navigation)
 
 - **테스트 제외 대상**
-    - 프레임워크 자체 동작
-    - Activity, Fragment. Service에는 테스트가 필요한 로직을 가능한 배치하지 않음
+  - 프레임워크 자체 동작
+  - Activity, Fragment. Service에는 테스트가 필요한 로직을 가능한 배치하지 않음
 
 </br>
 
@@ -117,16 +125,16 @@ fun x1_multiplyBy_2() {
 
 - **Testing Framework**
 
-    - **Junit4** : Java의 단위 테스트 코드를 작성하기 위해 만들어진 프레임워크로 Jetpack Test 라이브러리는 JUnit4를 기준으로 만들어져 있음. 현재 최산 버전은 JUnit5이나, 안드로이드를 완벽히 지원하지 않음
-    - **Robolectric** : JVM 만으로 안드로이드 프레임워크를 테스팅하기 위해 만들어진 프레임워크
+  - **Junit4** : Java의 단위 테스트 코드를 작성하기 위해 만들어진 프레임워크로 Jetpack Test 라이브러리는 JUnit4를 기준으로 만들어져 있음. 현재 최산 버전은 JUnit5이나, 안드로이드를 완벽히 지원하지 않음
+  - **Robolectric** : JVM 만으로 안드로이드 프레임워크를 테스팅하기 위해 만들어진 프레임워크
 
 - **Assertion**
 
-    - **Truth** : Test를 수행할 때는 Test된 값이 맞는지 Assertion 즉 역설(증명)을 해야하는데 이때 쓰이는 라이브러리
+  - **Truth** : Test를 수행할 때는 Test된 값이 맞는지 Assertion 즉 역설(증명)을 해야하는데 이때 쓰이는 라이브러리
 
 - **UI Testing**
 
-    - **Espresso** : 단일 안드로이드 앱의 UI를 테스트하는 프레임워크
+  - **Espresso** : 단일 안드로이드 앱의 UI를 테스트하는 프레임워크
 
 
 
@@ -229,9 +237,9 @@ private fun searchBooks() {
 ```
 
 - **실시간 검색기능**
-    - EditText에 TextChaneListener를 달아주어 지정한 시간(SEARCH_BOOKS_TIME_DELAY)보다 간격이 커지는 순간 ViewModel의 searchBookPaging 함수에 요청을 보냅니다.
-    - 사용자의 입력 이벤트가 발생할 때마다 Flow가 순차적으로 여러값을 처리합니다.
-    - 그렇게 받아온 데이터들을 MutableStateFlow에 보관하며 collectLatestStateFlow 확장함수를 통해 옵저빙하며 갱신합니다.
+  - EditText에 TextChaneListener를 달아주어 지정한 시간(SEARCH_BOOKS_TIME_DELAY)보다 간격이 커지는 순간 ViewModel의 searchBookPaging 함수에 요청을 보냅니다.
+  - 사용자의 입력 이벤트가 발생할 때마다 Flow가 순차적으로 여러값을 처리합니다.
+  - 그렇게 받아온 데이터들을 MutableStateFlow에 보관하며 collectLatestStateFlow 확장함수를 통해 옵저빙하며 갱신합니다.
 
 ```kotlin
 fun <T> Fragment.collectLatestStateFlow(flow: Flow<T>, collector: suspend (T) -> Unit) {
@@ -435,21 +443,21 @@ class ViewModelFactory(private val context: Context) : ViewModelProvider.Factory
 📌 **Build Tool**
 
 - **빌드(Build)란 무엇인가?**
-    - **소스 코드를 바이너리 코드로 컴파일 한 다음에 그 바이너리 코드를 서로 링크(Link)해서 실행 가능한 파일로 패키징** 하는 것을 소프트웨어를 빌드한다고 한다,
+  - **소스 코드를 바이너리 코드로 컴파일 한 다음에 그 바이너리 코드를 서로 링크(Link)해서 실행 가능한 파일로 패키징** 하는 것을 소프트웨어를 빌드한다고 한다,
 - **프로덕션의 빌드(Build) 과정**
-    - 연관된 의존성 다운로드
-    - 소스 코드를 바이너리 코드로 컴파일
-    - 바이너리 코드 링크하여 실행가능 파일로 패키징
-    - 테스트 수행
-    - 프로덕션 시스템에 배포
+  - 연관된 의존성 다운로드
+  - 소스 코드를 바이너리 코드로 컴파일
+  - 바이너리 코드 링크하여 실행가능 파일로 패키징
+  - 테스트 수행
+  - 프로덕션 시스템에 배포
 
 소스코드를 수정할 때마다 빌드과정을 하나하나 수행하는 것은 노력이 많이 들어가기 때문에 **일반적으로 이 과정을 자동으로 수행해주는 빌드 툴(Build Tool)을 사용**하게 됩니다.
 
 - **Gradle**
-    - 2008년에 발표된 **Groovy 언어 기반의 빌드 툴**
-    - 규칙에 따라 빌드 파일명은 build.gradle
-    - Java와 비슷한 문법을 가진 Groovy 언어를 채택함으로 가독성을 높임
-    - **컴파일을 한 필요가 없어짐**
+  - 2008년에 발표된 **Groovy 언어 기반의 빌드 툴**
+  - 규칙에 따라 빌드 파일명은 build.gradle
+  - Java와 비슷한 문법을 가진 Groovy 언어를 채택함으로 가독성을 높임
+  - **컴파일을 한 필요가 없어짐**
 
 </br>
 
@@ -467,8 +475,8 @@ class ViewModelFactory(private val context: Context) : ViewModelProvider.Factory
 📌 **Kotlin Script(KTS)**
 
 - Gradle 5.0에는 큰 변화가 생겼습니다.
-    - Java 11 도입
-    - Kotlin-DSL 도입
+  - Java 11 도입
+  - Kotlin-DSL 도입
 - 이 말은 Groovy를 사용하던 기존의 Gradle 스크립트를 코틀린에서도 할 수 있게 되었습니다.
 
 </br>
@@ -476,7 +484,7 @@ class ViewModelFactory(private val context: Context) : ViewModelProvider.Factory
 📌 **KTS 장점**
 
 - IDE의 지원으로 향상된 편집환경
-    - 컴파일 타임에 에러 확인 / 코드 탐색 / 자동 완성 / 구문 강조
+  - 컴파일 타임에 에러 확인 / 코드 탐색 / 자동 완성 / 구문 강조
 - 익숙한 코틀린 언어로 작성 가능
 
 위와 같은 장점을 경험해보고자 Groovy를 사용하던 Gradle 스크립트를 코틀린으로 마이그레이션했습니다.
