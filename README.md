@@ -253,7 +253,7 @@ fun <T> Fragment.collectLatestStateFlow(flow: Flow<T>, collector: suspend (T) ->
 
 </br>
 
-### 📌 버전 1.1 추가
+### 📌 버전 1.2 추가
 
 - 스토어 배포 후 유저 피드백 결과, 빠르게 검색어를 입력할 경우 몇몇 경우 EditText에 친 검색어와 검색결과가 일치하지 않는 이슈가 보고되었습니다.
 - 따라서 Flow의 Debounce 키워드를 사용해 사용자의 입력 이벤트가 종료되고 0.2초 후 서버에 검색 요청을 보내는 로직으로 개선하여 이슈를 해결하였습니다.
@@ -340,7 +340,6 @@ fun searchBooksPaging(query: String) {
 - View와 Model 사이의 의존성이 없음
 - View는 ViewModel을 참조하지만 ViewModel은 View를 참조하지 않음
 - 각각 부분이 독립적이라 모듈화 개발에 적합
-- DataBinding을 함께 활용하면 View와 ViewModel 간의 의존성을 낮추고 View에서 처리하는 로직을 감소시킬 수 있음
 
 이에 따라 하루독후감은 MVVM 패턴을 적용하게 되었습니다.
 
@@ -422,6 +421,66 @@ class ViewModelFactory(private val context: Context) : ViewModelProvider.Factory
   ⇒ UI Layer, Data Layer 사이에서 필요 이상의 데이터를 주고 받음
 
 즉 **속도는 빠르게, 부하는 적게** 하기 위해 지금 당장 필요한 데이터만 가져올 수 있도록 데이터를 분리하는 작업을 위해 페이징을 적용했습니다.
+
+</br>
+
+
+### 왜 Paging3 와 Room 의 호환성
+
+- 서버에서 데이터를 페이징 처리하여 가져오려면 PagingSource를 직접 구현하여야 합니다.
+- 아래 코드는 실제 하루독후감의 내부 코드로, Room이 아닌 실제 카카오 서버에서 책 데이터를 가져와 페이징처리하는 부분입니다
+```kotlin
+interface BookSearchApi {
+
+    @Headers("Authorization: KakaoAK $API_KEY")
+    @GET("v3/search/book")
+    suspend fun searchBooks(
+        @Query("query") query: String,
+        @Query("sort") sort: String,
+        @Query("page") page: Int,
+        @Query("size") size: Int
+    ): Response<SearchResponse>
+}
+```
+
+```kotlin
+class BookSearchPagingSource(
+    private val api: BookSearchApi,
+    private val query: String,
+    private val sort: String,
+) : PagingSource<Int, Book>() {
+
+	override suspend fun load(params: LoadParams<Int>): LoadResult<Int, Book> {
+		...
+		val response = api.searchBooks(query, sort, pageNumber, params.loadSize)
+		...
+	}
+
+	override fun getRefreshKey(state: PagingState<Int, Book>): Int? {
+        ...
+    }
+```
+
+</br>
+
+- 하지만 Room 을 사용한다면 쿼리 결과를 자동으로 PagingSource 타입으로 반환받을 수 있습니다.
+- 아래 코드는 하루독후감에서 Room 의 쿼리 결과를 PaigingSouce 타입으로 반환받는 부분입니다.
+
+```kotlin
+@Dao
+interface BookReportDao {
+
+    ...
+
+    @Query("SELECT * FROM bookReports")
+    fun getBookReportsPaging(): PagingSource<Int, BookReport> // Room 은 쿼리 결과를 PagingSource 타입으로 반환받을 수 있다.
+}
+
+```
+
+</br>
+
+- 이처럼 Paging3 라이브러리가 Room과의 좋은 호환성을 보이고 있음을 알 수 있었습니다.
 
 
 </div>
