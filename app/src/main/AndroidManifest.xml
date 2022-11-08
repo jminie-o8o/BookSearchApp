@@ -16,7 +16,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.BookSearchApp">
         <activity
-            android:name=".ui.view.SplashActivity"
+            android:name=".ui.SplashActivity"
             android:exported="true"
             android:theme="@style/Theme.BookSearchApp.Splash">
             <intent-filter>
@@ -27,7 +27,7 @@
         </activity>
 
         <activity
-            android:name="com.stark.booksearchapp.ui.view.MainActivity"
+            android:name="com.stark.booksearchapp.ui.MainActivity"
             android:exported="false"
             android:windowSoftInputMode="adjustPan">
         </activity>

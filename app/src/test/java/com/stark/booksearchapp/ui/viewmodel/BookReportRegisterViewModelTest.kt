@@ -4,7 +4,7 @@ import androidx.test.filters.MediumTest
 import com.google.common.truth.Truth.assertThat
 import com.stark.booksearchapp.data.model.BookReport
 import com.stark.booksearchapp.data.repository.FakeBookReportRepository
-import com.stark.booksearchapp.ui.view.bookreport.viewmodel.BookReportRegisterViewModel
+import com.stark.booksearchapp.ui.bookreport.viewmodel.BookReportRegisterViewModel
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.test.runTest

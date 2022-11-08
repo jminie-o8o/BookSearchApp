@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/fragment_favorite"
-        android:name="com.stark.booksearchapp.ui.view.favorite.FavoriteFragment"
+        android:name="com.stark.booksearchapp.ui.favorite.FavoriteFragment"
         android:label="@string/favorite"
         tools:layout="@layout/fragment_favorite" >
         <action
@@ -20,7 +20,7 @@
     </fragment>
     <fragment
         android:id="@+id/fragment_setting"
-        android:name="com.stark.booksearchapp.ui.view.setting.SettingFragment"
+        android:name="com.stark.booksearchapp.ui.setting.SettingFragment"
         android:label="@string/setting"
         tools:layout="@layout/fragment_setting" >
         <action
@@ -33,7 +33,7 @@
     </fragment>
     <fragment
         android:id="@+id/fragment_search"
-        android:name="com.stark.booksearchapp.ui.view.search.SearchFragment"
+        android:name="com.stark.booksearchapp.ui.search.SearchFragment"
         android:label="@string/search"
         tools:layout="@layout/fragment_search" >
         <action
@@ -46,7 +46,7 @@
     </fragment>
     <fragment
         android:id="@+id/fragment_book"
-        android:name="com.stark.booksearchapp.ui.view.book.BookFragment"
+        android:name="com.stark.booksearchapp.ui.book.BookFragment"
         android:label="@string/book_info"
         tools:layout="@layout/fragment_book" >
         <argument
@@ -62,7 +62,7 @@
     </fragment>
     <fragment
         android:id="@+id/fragment_book_report"
-        android:name="com.stark.booksearchapp.ui.view.bookreport.BookReportFragment"
+        android:name="com.stark.booksearchapp.ui.bookreport.BookReportFragment"
         android:label="fragment_book_report"
         tools:layout="@layout/fragment_book_report" >
         <action
@@ -75,7 +75,7 @@
     </fragment>
     <fragment
         android:id="@+id/fragment_register_book_report"
-        android:name="com.stark.booksearchapp.ui.view.bookreport.BookReportRegisterFragment"
+        android:name="com.stark.booksearchapp.ui.bookreport.BookReportRegisterFragment"
         android:label="fragment_register_book_report"
         tools:layout="@layout/fragment_register_book_report" >
         <argument
@@ -93,7 +93,7 @@
     </fragment>
     <fragment
         android:id="@+id/fragment_book_report_detail"
-        android:name="com.stark.booksearchapp.ui.view.bookreport.BookReportDetailFragment"
+        android:name="com.stark.booksearchapp.ui.bookreport.BookReportDetailFragment"
         android:label="fragment_book_report_detail"
         tools:layout="@layout/fragment_book_report_detail" >
         <argument
@@ -119,7 +119,7 @@
     </fragment>
     <fragment
         android:id="@+id/fragment_book_report_modify"
-        android:name="com.stark.booksearchapp.ui.view.bookreport.BookReportModifyFragment"
+        android:name="com.stark.booksearchapp.ui.bookreport.BookReportModifyFragment"
         android:label="fragment_book_report_modify"
         tools:layout="@layout/fragment_book_report_modify" >
         <argument
@@ -128,7 +128,7 @@
     </fragment>
     <fragment
         android:id="@+id/alarmFragment"
-        android:name="com.stark.booksearchapp.ui.view.alarm.AlarmFragment"
+        android:name="com.stark.booksearchapp.ui.alarm.AlarmFragment"
         android:label="fragment_alarm"
         tools:layout="@layout/fragment_alarm" />
 </navigation>
