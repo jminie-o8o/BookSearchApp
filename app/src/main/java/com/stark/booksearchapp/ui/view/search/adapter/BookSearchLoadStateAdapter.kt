@@ -1,4 +1,4 @@
-package com.stark.booksearchapp.ui.adapter
+package com.stark.booksearchapp.ui.view.search.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup

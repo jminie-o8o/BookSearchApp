@@ -1,4 +1,4 @@
-package com.stark.booksearchapp.ui.view
+package com.stark.booksearchapp.ui.view.search
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -15,11 +15,11 @@ import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.stark.booksearchapp.R
-import com.stark.booksearchapp.data.model.CEHModel
 import com.stark.booksearchapp.databinding.FragmentSearchBinding
-import com.stark.booksearchapp.ui.adapter.BookSearchLoadStateAdapter
-import com.stark.booksearchapp.ui.adapter.BookSearchPagingAdapter
-import com.stark.booksearchapp.ui.viewmodel.SearchViewModel
+import com.stark.booksearchapp.ui.view.MainActivity
+import com.stark.booksearchapp.ui.view.search.adapter.BookSearchLoadStateAdapter
+import com.stark.booksearchapp.ui.view.search.adapter.BookSearchPagingAdapter
+import com.stark.booksearchapp.ui.view.search.viewmodel.SearchViewModel
 import com.stark.booksearchapp.util.collectLatestStateFlow
 import com.stark.booksearchapp.util.collectStateFlow
 import dagger.hilt.android.AndroidEntryPoint

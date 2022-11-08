@@ -3,6 +3,8 @@ package com.stark.booksearchapp.ui.viewmodel
 import com.google.common.truth.Truth
 import com.stark.booksearchapp.data.model.BookReport
 import com.stark.booksearchapp.data.repository.FakeBookReportRepository
+import com.stark.booksearchapp.ui.view.bookreport.viewmodel.BookReportDetailViewModel
+import com.stark.booksearchapp.ui.view.bookreport.viewmodel.BookReportRegisterViewModel
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.test.runTest
 import org.junit.Before

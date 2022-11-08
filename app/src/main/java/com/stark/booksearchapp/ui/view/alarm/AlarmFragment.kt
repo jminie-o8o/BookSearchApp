@@ -1,4 +1,4 @@
-package com.stark.booksearchapp.ui.view
+package com.stark.booksearchapp.ui.view.alarm
 
 import android.app.AlarmManager
 import android.app.PendingIntent
@@ -6,10 +6,10 @@ import android.app.TimePickerDialog
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
@@ -17,7 +17,8 @@ import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.stark.booksearchapp.R
 import com.stark.booksearchapp.data.model.AlarmDisplayModel
 import com.stark.booksearchapp.databinding.FragmentAlarmBinding
-import com.stark.booksearchapp.ui.viewmodel.AlarmViewModel
+import com.stark.booksearchapp.ui.view.MainActivity
+import com.stark.booksearchapp.ui.view.alarm.viewmodel.AlarmViewModel
 import com.stark.booksearchapp.util.AlarmReceiver
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.async

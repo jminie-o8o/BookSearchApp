@@ -1,4 +1,4 @@
-package com.stark.booksearchapp.ui.view
+package com.stark.booksearchapp.ui.view.bookreport
 
 import android.annotation.SuppressLint
 import android.app.AlertDialog
@@ -20,7 +20,7 @@ import com.stark.booksearchapp.R
 import com.stark.booksearchapp.data.model.Book
 import com.stark.booksearchapp.data.model.BookReport
 import com.stark.booksearchapp.databinding.FragmentRegisterBookReportBinding
-import com.stark.booksearchapp.ui.viewmodel.BookReportRegisterViewModel
+import com.stark.booksearchapp.ui.view.bookreport.viewmodel.BookReportRegisterViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import java.text.SimpleDateFormat
 import java.util.Date

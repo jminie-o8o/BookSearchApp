@@ -1,4 +1,4 @@
-package com.stark.booksearchapp.ui.view
+package com.stark.booksearchapp.ui.view.bookreport
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -13,8 +13,9 @@ import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.stark.booksearchapp.R
 import com.stark.booksearchapp.databinding.FragmentBookReportBinding
 import com.stark.booksearchapp.ui.adapter.BookReportPagingAdapter
-import com.stark.booksearchapp.ui.adapter.BookSearchLoadStateAdapter
-import com.stark.booksearchapp.ui.viewmodel.BookReportViewModel
+import com.stark.booksearchapp.ui.view.MainActivity
+import com.stark.booksearchapp.ui.view.bookreport.viewmodel.BookReportViewModel
+import com.stark.booksearchapp.ui.view.search.adapter.BookSearchLoadStateAdapter
 import com.stark.booksearchapp.util.collectLatestStateFlow
 import dagger.hilt.android.AndroidEntryPoint
 

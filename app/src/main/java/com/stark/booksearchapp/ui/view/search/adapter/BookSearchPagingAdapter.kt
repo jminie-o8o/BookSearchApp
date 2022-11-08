@@ -1,4 +1,4 @@
-package com.stark.booksearchapp.ui.adapter
+package com.stark.booksearchapp.ui.view.search.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -6,6 +6,7 @@ import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
 import com.stark.booksearchapp.data.model.Book
 import com.stark.booksearchapp.databinding.ItemBookPreviewBinding
+import com.stark.booksearchapp.ui.view.search.BookSearchAdapter
 
 class BookSearchPagingAdapter :
     PagingDataAdapter<Book, BookSearchAdapter.BookSearchViewHolder>(BookDiffCallback) {

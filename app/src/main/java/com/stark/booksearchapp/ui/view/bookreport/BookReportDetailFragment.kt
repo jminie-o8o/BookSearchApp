@@ -1,4 +1,4 @@
-package com.stark.booksearchapp.ui.view
+package com.stark.booksearchapp.ui.view.bookreport
 
 import android.annotation.SuppressLint
 import android.app.AlertDialog
@@ -18,7 +18,8 @@ import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.stark.booksearchapp.R
 import com.stark.booksearchapp.data.model.BookReport
 import com.stark.booksearchapp.databinding.FragmentBookReportDetailBinding
-import com.stark.booksearchapp.ui.viewmodel.BookReportDetailViewModel
+import com.stark.booksearchapp.ui.view.MainActivity
+import com.stark.booksearchapp.ui.view.bookreport.viewmodel.BookReportDetailViewModel
 import com.stark.booksearchapp.util.collectStateFlow
 import dagger.hilt.android.AndroidEntryPoint
 

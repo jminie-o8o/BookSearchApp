@@ -1,4 +1,4 @@
-package com.stark.booksearchapp.ui.viewmodel
+package com.stark.booksearchapp.ui.view.search.viewmodel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope

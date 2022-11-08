@@ -1,4 +1,4 @@
-package com.stark.booksearchapp.ui.view
+package com.stark.booksearchapp.ui.view.setting
 
 import android.os.Bundle
 import android.util.Log
@@ -12,6 +12,7 @@ import androidx.navigation.fragment.findNavController
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.stark.booksearchapp.R
 import com.stark.booksearchapp.databinding.FragmentSettingBinding
+import com.stark.booksearchapp.ui.view.MainActivity
 import com.stark.booksearchapp.ui.viewmodel.SettingsViewModel
 import com.stark.booksearchapp.util.Sort
 import dagger.hilt.android.AndroidEntryPoint

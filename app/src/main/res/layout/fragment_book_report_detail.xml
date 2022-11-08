@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.view.BookReportDetailFragment">
+    tools:context=".ui.view.bookreport.BookReportDetailFragment">
 
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/book_report_app_bar"

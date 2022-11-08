@@ -1,4 +1,4 @@
-package com.stark.booksearchapp.ui.adapter
+package com.stark.booksearchapp.ui.view.search
 
 import android.annotation.SuppressLint
 import android.view.LayoutInflater

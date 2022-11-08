@@ -1,4 +1,4 @@
-package com.stark.booksearchapp.ui.view
+package com.stark.booksearchapp.ui.view.favorite
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -15,8 +15,9 @@ import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.snackbar.Snackbar
 import com.stark.booksearchapp.R
 import com.stark.booksearchapp.databinding.FragmentFavoriteBinding
-import com.stark.booksearchapp.ui.adapter.BookSearchPagingAdapter
-import com.stark.booksearchapp.ui.viewmodel.FavoriteViewModel
+import com.stark.booksearchapp.ui.view.MainActivity
+import com.stark.booksearchapp.ui.view.favorite.viewmodel.FavoriteViewModel
+import com.stark.booksearchapp.ui.view.search.adapter.BookSearchPagingAdapter
 import com.stark.booksearchapp.util.collectLatestStateFlow
 import dagger.hilt.android.AndroidEntryPoint
 

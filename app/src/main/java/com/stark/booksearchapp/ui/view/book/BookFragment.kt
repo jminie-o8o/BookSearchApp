@@ -1,4 +1,4 @@
-package com.stark.booksearchapp.ui.view
+package com.stark.booksearchapp.ui.view.book
 
 import android.annotation.SuppressLint
 import android.os.Bundle
@@ -15,7 +15,8 @@ import com.google.android.material.snackbar.Snackbar
 import com.stark.booksearchapp.R
 import com.stark.booksearchapp.data.model.Book
 import com.stark.booksearchapp.databinding.FragmentBookBinding
-import com.stark.booksearchapp.ui.viewmodel.BookViewModel
+import com.stark.booksearchapp.ui.view.MainActivity
+import com.stark.booksearchapp.ui.view.book.viewmodel.BookViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -30,7 +31,7 @@ class BookFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        _binding = FragmentBookBinding.inflate(inflater, container, false)
+        _binding = com.stark.booksearchapp.databinding.FragmentBookBinding.inflate(inflater, container, false)
         return binding.root
     }
 

@@ -21,7 +21,7 @@ import androidx.test.filters.SmallTest
 import com.google.common.truth.Truth.assertThat
 import com.stark.booksearchapp.R
 import com.stark.booksearchapp.ui.adapter.BookReportPagingAdapter
-import com.stark.booksearchapp.ui.adapter.BookSearchAdapter
+import com.stark.booksearchapp.ui.view.search.BookSearchAdapter
 import dagger.hilt.android.testing.HiltAndroidRule
 import dagger.hilt.android.testing.HiltAndroidTest
 import org.hamcrest.Matcher
