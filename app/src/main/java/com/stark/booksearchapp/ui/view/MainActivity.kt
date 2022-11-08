@@ -33,7 +33,6 @@ class MainActivity : AppCompatActivity() {
         binding.bottomNavigationView.setupWithNavController(navController)
     }
 
-    // EditText 이외에 다른 곳을 터치하면 소프트 키보드 내려가는 기능
     override fun onTouchEvent(event: MotionEvent?): Boolean {
         val imm: InputMethodManager =
             getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager

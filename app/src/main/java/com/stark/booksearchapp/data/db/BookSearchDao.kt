@@ -12,7 +12,7 @@ import kotlinx.coroutines.flow.Flow
 @Dao
 interface BookSearchDao {
 
-    @Insert(onConflict = OnConflictStrategy.REPLACE) // 만약 동일한 PrimaryKey 가 있을 경우 덮어쓰기
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertBook(book: Book)
 
     @Delete
@@ -22,5 +22,5 @@ interface BookSearchDao {
     fun getFavoriteBooks(): Flow<List<Book>>
 
     @Query("SELECT * FROM books")
-    fun getFavoritePagingBooks(): PagingSource<Int, Book> // Room 은 쿼리 결과를 PagingSource 타입으로 반환받을 수 있다.
+    fun getFavoritePagingBooks(): PagingSource<Int, Book>
 }

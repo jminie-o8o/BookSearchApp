@@ -28,7 +28,7 @@ data class Meta(
 
 @Parcelize
 @JsonClass(generateAdapter = true)
-@Entity(tableName = "books") // 데이터베이스에서 사용할 Entity 로 만들어준다.
+@Entity(tableName = "books")
 data class Book(
     @field:Json(name = "authors")
     val authors: List<String>,

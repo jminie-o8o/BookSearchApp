@@ -15,7 +15,6 @@ class BookReportModifyViewModel @Inject constructor(
     private val bookReportRepository: BookReportRepository
 ) : ViewModel() {
 
-    // Room
     fun saveBookReport(bookReport: BookReport) = viewModelScope.launch(Dispatchers.IO) {
         bookReportRepository.insertBookReport(bookReport)
     }

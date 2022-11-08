@@ -19,13 +19,11 @@ class FavoriteViewModel @Inject constructor(
     private val bookSearchRepository: BookSearchRepository,
 ) : ViewModel() {
 
-    // Paging
     val favoritePagingBooks: StateFlow<PagingData<Book>> =
         bookSearchRepository.getFavoritePagingBooks()
             .cachedIn(viewModelScope)
             .stateIn(viewModelScope, SharingStarted.WhileSubscribed(5000), PagingData.empty())
 
-    // Room
     fun saveBook(book: Book) = viewModelScope.launch(Dispatchers.IO) {
         bookSearchRepository.insertBook(book)
     }

@@ -73,7 +73,7 @@ class FavoriteFragment : Fragment() {
                 viewHolder: RecyclerView.ViewHolder,
                 target: RecyclerView.ViewHolder
             ): Boolean {
-                return true // 사용하지 않을 것이기 때문에 return true 로 설정
+                return true
             }
 
             override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {

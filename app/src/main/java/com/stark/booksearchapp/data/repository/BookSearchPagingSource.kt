@@ -14,7 +14,6 @@ class BookSearchPagingSource(
     private val sort: String,
 ) : PagingSource<Int, Book>() {
 
-    // Pager 가 데이터를 호출할 때 마다 불리는 함수
     override suspend fun load(params: LoadParams<Int>): LoadResult<Int, Book> {
         return try {
             val pageNumber = params.key ?: STARTING_PAGE_INDEX
@@ -27,8 +26,6 @@ class BookSearchPagingSource(
             val nextKey = if (endOfPaginationReached) {
                 null
             } else {
-                // initial load size = 3 * NETWORK_PAGE_SIZE
-                // ensure we're not requesting duplicating items, at the 2nd request
                 pageNumber + (params.loadSize / PAGING_SIZE)
             }
             LoadResult.Page(
@@ -43,7 +40,6 @@ class BookSearchPagingSource(
         }
     }
 
-    // 여러가지 이유로 페이지를 갱신해야 될 때 사용하는 함수
     override fun getRefreshKey(state: PagingState<Int, Book>): Int? {
         return state.anchorPosition?.let { anchorPosition ->
             state.closestPageToPosition(anchorPosition)?.prevKey?.plus(1)

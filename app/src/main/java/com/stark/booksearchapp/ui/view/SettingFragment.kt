@@ -35,7 +35,6 @@ class SettingFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
         saveSettings()
         loadSettings()
         showWorkStatus()
@@ -73,14 +72,12 @@ class SettingFragment : Fragment() {
             binding.rgSort.check(buttonId)
         }
 
-        // WorkManger
         lifecycleScope.launch {
             val mode = settingViewModel.getCacheDeleteMode()
             binding.swCacheDelete.isChecked = mode
         }
     }
 
-    // LiveData 로 반환받은 작업상태를 반환
     private fun showWorkStatus() {
         settingViewModel.getWorkStatus().observe(viewLifecycleOwner) { workInfo ->
             Log.d("WorkManger", workInfo.toString())

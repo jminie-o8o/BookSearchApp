@@ -19,7 +19,6 @@ class BookReportViewModel @Inject constructor(
     private val bookReportRepository: BookReportRepository
 ) : ViewModel() {
 
-    // paging
     val bookReports: StateFlow<PagingData<BookReport>> =
         bookReportRepository.getBookReportPaging()
             .cachedIn(viewModelScope)

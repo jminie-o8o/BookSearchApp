@@ -24,7 +24,6 @@ class SettingsViewModel @Inject constructor(
     private val workManager: WorkManager,
 ) : ViewModel() {
 
-    // DataStore
     fun saveSortMode(value: String) = viewModelScope.launch(Dispatchers.IO) {
         bookSearchRepository.saveSortMode(value)
     }
@@ -41,7 +40,6 @@ class SettingsViewModel @Inject constructor(
         bookSearchRepository.getCacheDeleteMode().first()
     }
 
-    // WorkManager
     fun setWork() {
         val constraints = Constraints.Builder()
             .setRequiresCharging(true)

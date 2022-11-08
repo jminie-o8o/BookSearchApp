@@ -67,13 +67,11 @@ class BookFragment : Fragment() {
         }
     }
 
-    // ConstructiveFirst, DestructiveLast 룰에 따라 super 의 위치를 지정
     override fun onPause() {
         binding.webView.onPause()
         super.onPause()
     }
 
-    // ConstructiveFirst, DestructiveLast 룰에 따라 super 의 위치를 지정
     override fun onResume() {
         super.onResume()
         binding.webView.onResume()

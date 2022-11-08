@@ -8,5 +8,5 @@ object Constants {
     const val SEARCH_BOOKS_TIME_DELAY = 400L
     const val DATASTORE_NAME = "preferences_datastore"
     const val ALARM_DATASTORE = "alarm_datastore"
-    const val PAGING_SIZE = 15 // 페이징에서 한번에 가져올 데이터 수
+    const val PAGING_SIZE = 15
 }

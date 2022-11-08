@@ -5,7 +5,6 @@ import kotlinx.coroutines.flow.Flow
 
 interface AlarmRepository {
 
-    // DataStore
     suspend fun saveAlarm(model: AlarmDisplayModel)
 
     suspend fun getAlarm(): Flow<String>

@@ -27,11 +27,9 @@ class SearchViewModel @Inject constructor(
     private val bookSearchRepository: BookSearchRepository,
 ) : ViewModel() {
 
-    // Query
     private val _searchWord = MutableSharedFlow<String>()
     val searchWord = _searchWord.debounce { 200 }
 
-    // Paging
     private val _searchPagingResult = MutableStateFlow<PagingData<Book>>(PagingData.empty())
     val searchPagingResult: StateFlow<PagingData<Book>> = _searchPagingResult.asStateFlow()
 

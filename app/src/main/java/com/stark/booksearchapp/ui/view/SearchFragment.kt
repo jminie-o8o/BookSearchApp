@@ -93,9 +93,8 @@ class SearchFragment : Fragment() {
     }
 
     private fun setupLoadState() {
-        bookSearchAdapter.addLoadStateListener { combinedLoadStates ->  // PagingSource 의 로딩상태를 가지고 있음
+        bookSearchAdapter.addLoadStateListener { combinedLoadStates ->
             val loadState = combinedLoadStates.source
-            // 리스트가 비어있는지 판정
             val isListEmpty = bookSearchAdapter.itemCount < 1
                     && loadState.refresh is LoadState.NotLoading
                     && loadState.append.endOfPaginationReached

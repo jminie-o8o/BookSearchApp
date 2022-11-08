@@ -25,5 +25,5 @@ interface BookReportDao {
     fun getBookReports(): Flow<List<BookReport>>
 
     @Query("SELECT * FROM bookReports")
-    fun getBookReportsPaging(): PagingSource<Int, BookReport> // Room 은 쿼리 결과를 PagingSource 타입으로 반환받을 수 있다.
+    fun getBookReportsPaging(): PagingSource<Int, BookReport>
 }

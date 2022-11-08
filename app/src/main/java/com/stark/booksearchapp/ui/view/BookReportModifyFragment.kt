@@ -35,7 +35,6 @@ class BookReportModifyFragment : Fragment() {
         super.onAttach(context)
         pressBackCallback = object : OnBackPressedCallback(true) {
             override fun handleOnBackPressed() {
-                // 백 버튼을 눌렀을 때 로직을 여기서 구현
                 val layoutInflater = LayoutInflater.from(requireContext())
                 val view = layoutInflater.inflate(R.layout.cancel_modifying_fragment_dialog, null)
                 val alertDialog = AlertDialog.Builder(requireContext())

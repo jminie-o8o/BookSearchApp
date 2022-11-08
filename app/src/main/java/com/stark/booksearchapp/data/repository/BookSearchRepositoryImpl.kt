@@ -31,6 +31,7 @@ class BookSearchRepositoryImpl @Inject constructor(
     private val dataStore: DataStore<Preferences>,
     private val api: BookSearchApi
 ) : BookSearchRepository {
+
     override suspend fun searchBooks(
         query: String,
         sort: String,
@@ -52,7 +53,6 @@ class BookSearchRepositoryImpl @Inject constructor(
         return db.bookSearchDao().getFavoriteBooks()
     }
 
-    // DataStore
     private object PreferencesKeys {
         val SORT_MODE =
             stringPreferencesKey("sort_mode")
@@ -109,8 +109,8 @@ class BookSearchRepositoryImpl @Inject constructor(
         return Pager(
             config = PagingConfig(
                 pageSize = PAGING_SIZE,
-                enablePlaceholders = false, // true 라면 전체 데이터사이즈를 미리 받아와서 RecyclerView 에 미리 홀더를 만들어 놓고 나머지를 Null 로 만든다.
-                maxSize = PAGING_SIZE * 3 // Pager 가 메모리에 최대로 가지고 있을 수 있는 항목의 개수
+                enablePlaceholders = false,
+                maxSize = PAGING_SIZE * 3
             ),
             pagingSourceFactory = pagingSourceFactory
         ).flow
