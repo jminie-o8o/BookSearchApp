@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
@@ -17,6 +18,7 @@ import com.stark.booksearchapp.ui.MainActivity
 import com.stark.booksearchapp.ui.bookreport.viewmodel.BookReportViewModel
 import com.stark.booksearchapp.ui.search.adapter.BookSearchLoadStateAdapter
 import com.stark.booksearchapp.util.collectLatestStateFlow
+import com.stark.booksearchapp.util.collectStateFlow
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -42,6 +44,7 @@ class BookReportFragment : Fragment() {
             bookReportAdapter.submitData(it)
         }
         showBottomNavigation()
+        observeError()
     }
 
     private fun setupRecyclerView() {
@@ -63,6 +66,16 @@ class BookReportFragment : Fragment() {
     private fun showBottomNavigation() {
         val bottomNavigation = (activity as MainActivity).findViewById<BottomNavigationView>(R.id.bottom_navigation_view)
         bottomNavigation.visibility = View.VISIBLE
+    }
+
+    private fun observeError() {
+        collectStateFlow(bookReportViewModel.error) { CEHModel ->
+            if (CEHModel.throwable != null) Toast.makeText(
+                requireContext(),
+                CEHModel.errorMessage,
+                Toast.LENGTH_SHORT
+            ).show()
+        }
     }
 
     override fun onDestroyView() {

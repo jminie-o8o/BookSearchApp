@@ -9,6 +9,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
@@ -47,6 +48,7 @@ class BookReportDetailFragment : Fragment() {
         hideBottomNavigation()
         goBack()
         setToolBarMenuListener(bookReport)
+        observeError()
     }
 
     private fun getBookReport(bookReport: BookReport) {
@@ -112,6 +114,16 @@ class BookReportDetailFragment : Fragment() {
     private fun goBack() {
         binding.btnGoBack.setOnClickListener {
             findNavController().popBackStack()
+        }
+    }
+
+    private fun observeError() {
+        collectStateFlow(bookReportDetailViewModel.error) { CEHModel ->
+            if (CEHModel.throwable != null) Toast.makeText(
+                requireContext(),
+                CEHModel.errorMessage,
+                Toast.LENGTH_SHORT
+            ).show()
         }
     }
 
