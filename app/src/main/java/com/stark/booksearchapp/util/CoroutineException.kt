@@ -14,6 +14,7 @@ object CoroutineException {
                 CEHModel(throwable, "Http 관련 오류입니다")
             }
             is UnknownHostException -> CEHModel(throwable, "UnknownHost 오류입니다.")
+            is NullPointerException -> CEHModel(throwable, "NullPointer 오류입니다.")
             else -> CEHModel(throwable, "알 수 없는 오류입니다.")
         }
     }

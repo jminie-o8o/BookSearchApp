@@ -87,11 +87,6 @@ class SearchFragment : Fragment() {
         }
     }
 
-    override fun onDestroyView() {
-        _binding = null
-        super.onDestroyView()
-    }
-
     private fun setupLoadState() {
         bookSearchAdapter.addLoadStateListener { combinedLoadStates ->
             val loadState = combinedLoadStates.source
@@ -120,5 +115,10 @@ class SearchFragment : Fragment() {
                 Toast.LENGTH_SHORT
             ).show()
         }
+    }
+
+    override fun onDestroyView() {
+        _binding = null
+        super.onDestroyView()
     }
 }
