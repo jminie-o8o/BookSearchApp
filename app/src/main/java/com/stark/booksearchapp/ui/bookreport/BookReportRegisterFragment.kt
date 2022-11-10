@@ -10,6 +10,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import android.widget.Toast
 import androidx.activity.OnBackPressedCallback
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
@@ -21,6 +22,7 @@ import com.stark.booksearchapp.data.model.Book
 import com.stark.booksearchapp.data.model.BookReport
 import com.stark.booksearchapp.databinding.FragmentRegisterBookReportBinding
 import com.stark.booksearchapp.ui.bookreport.viewmodel.BookReportRegisterViewModel
+import com.stark.booksearchapp.util.collectStateFlow
 import dagger.hilt.android.AndroidEntryPoint
 import java.text.SimpleDateFormat
 import java.util.Date
@@ -73,6 +75,7 @@ class BookReportRegisterFragment : Fragment() {
         val book = args.book
         setBookInformation(book)
         saveBookReport(book)
+        observeError()
     }
 
     @SuppressLint("SetTextI18n")
@@ -110,6 +113,16 @@ class BookReportRegisterFragment : Fragment() {
         val simpleDateFormat = SimpleDateFormat("yyyy-MM-dd")
         val date = Date()
         return simpleDateFormat.format(date)
+    }
+
+    private fun observeError() {
+        collectStateFlow(bookReportRegisterViewModel.error) { CEHModel ->
+            if (CEHModel.throwable != null) Toast.makeText(
+                requireContext(),
+                CEHModel.errorMessage,
+                Toast.LENGTH_SHORT
+            ).show()
+        }
     }
 
     override fun onDetach() {
