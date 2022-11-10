@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.webkit.WebViewClient
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
@@ -17,6 +18,7 @@ import com.stark.booksearchapp.data.model.Book
 import com.stark.booksearchapp.databinding.FragmentBookBinding
 import com.stark.booksearchapp.ui.MainActivity
 import com.stark.booksearchapp.ui.book.viewmodel.BookViewModel
+import com.stark.booksearchapp.util.collectStateFlow
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -43,6 +45,7 @@ class BookFragment : Fragment() {
         hideBottomNavigation()
         goBack()
         registerBookReport(book)
+        observeError()
     }
 
     @SuppressLint("SetJavaScriptEnabled")
@@ -91,6 +94,16 @@ class BookFragment : Fragment() {
     private fun goBack() {
         binding.btnGoBack.setOnClickListener {
             findNavController().popBackStack()
+        }
+    }
+
+    private fun observeError() {
+        collectStateFlow(bookViewModel.error) { CEHModel ->
+            if (CEHModel.throwable != null) Toast.makeText(
+                requireContext(),
+                CEHModel.errorMessage,
+                Toast.LENGTH_SHORT
+            ).show()
         }
     }
 }
