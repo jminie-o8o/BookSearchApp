@@ -29,7 +29,7 @@ class BookReportDetailViewModel @Inject constructor(
 
     private val exceptionHandler = CoroutineExceptionHandler { _, throwable ->
         viewModelScope.launch {
-            _error.emit(CoroutineException.checkThrowable(throwable))
+            _error.emit(CoroutineException.checkThrowableAtViewModel(throwable))
         }
     }
 

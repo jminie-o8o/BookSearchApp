@@ -10,7 +10,6 @@ import com.stark.booksearchapp.data.repository.BookReportRepository
 import com.stark.booksearchapp.util.CoroutineException
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.CoroutineExceptionHandler
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.SharedFlow
 import kotlinx.coroutines.flow.SharingStarted
@@ -30,7 +29,7 @@ class BookReportViewModel @Inject constructor(
 
     private val exceptionHandler = CoroutineExceptionHandler { _, throwable ->
         viewModelScope.launch {
-            _error.emit(CoroutineException.checkThrowable(throwable))
+            _error.emit(CoroutineException.checkThrowableAtViewModel(throwable))
         }
     }
 

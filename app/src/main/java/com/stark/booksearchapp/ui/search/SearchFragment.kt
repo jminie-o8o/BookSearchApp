@@ -5,7 +5,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import androidx.core.content.ContentProviderCompat.requireContext
 import androidx.core.view.isVisible
 import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.Fragment
@@ -21,13 +20,10 @@ import com.stark.booksearchapp.ui.MainActivity
 import com.stark.booksearchapp.ui.search.adapter.BookSearchLoadStateAdapter
 import com.stark.booksearchapp.ui.search.adapter.BookSearchPagingAdapter
 import com.stark.booksearchapp.ui.search.viewmodel.SearchViewModel
+import com.stark.booksearchapp.util.CoroutineException
 import com.stark.booksearchapp.util.collectLatestStateFlow
 import com.stark.booksearchapp.util.collectStateFlow
 import dagger.hilt.android.AndroidEntryPoint
-import retrofit2.HttpException
-import java.net.ConnectException
-import java.net.SocketException
-import java.net.UnknownHostException
 
 @AndroidEntryPoint
 class SearchFragment : Fragment() {
@@ -121,33 +117,7 @@ class SearchFragment : Fragment() {
                 loadState.refresh is LoadState.Error -> loadState.refresh as LoadState.Error
                 else -> null
             }
-            when (errorState?.error) {
-                is HttpException -> Toast.makeText(
-                    requireContext(),
-                    "Http에러가 발생했습니다.",
-                    Toast.LENGTH_SHORT
-                ).show()
-                is ConnectException -> Toast.makeText(
-                    requireContext(),
-                    "네트워크 연결이 불안정합니다.",
-                    Toast.LENGTH_SHORT
-                ).show()
-                is SocketException -> Toast.makeText(
-                    requireContext(),
-                    "소켓 연결이 끊겼습니다.",
-                    Toast.LENGTH_SHORT
-                ).show()
-                is NullPointerException -> Toast.makeText(
-                    requireContext(),
-                    "NullPointer 오류입니다.",
-                    Toast.LENGTH_SHORT
-                ).show()
-                is UnknownHostException ->  Toast.makeText(
-                    requireContext(),
-                    "도메인 주소를 찾지 못했습니다.\n네트워크 상태를 확인하세요",
-                    Toast.LENGTH_SHORT
-                ).show()
-            }
+            CoroutineException.checkThrowableAtView(errorState?.error, requireContext())
         }
     }
 
