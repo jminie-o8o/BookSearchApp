@@ -12,14 +12,11 @@ import java.io.File
 @HiltWorker
 class CacheDeleteWorker @AssistedInject constructor(
     @Assisted context: Context,
-    @Assisted workerParameters: WorkerParameters,
-    private val cacheDeleteResult: String
+    @Assisted workerParameters: WorkerParameters
 ) : Worker(context, workerParameters) {
 
-    // doWork() 함수 내부에 백그라운드 작업을 정의한다.
     override fun doWork(): Result {
         return try {
-            Log.d("WorkManager", cacheDeleteResult)
             clearApplicationCache(applicationContext)
             Result.success()
         } catch (e: Exception) {
@@ -35,7 +32,6 @@ class CacheDeleteWorker @AssistedInject constructor(
             val children = appDir.list()
             if (children != null) {
                 for (s in children) {
-                    // 다운로드 파일은 지우지 않도록 설정
                     if (s.equals("lib") || s.equals("files")) continue
                     deleteDir(File(appDir, s))
                     Log.d("WorkManager", "File/data/data ${context.packageName} / $s Deleted")
