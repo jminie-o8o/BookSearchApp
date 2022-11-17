@@ -90,6 +90,7 @@
             android:id="@+id/et_book_report_title"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:fontFamily="@font/hanna_air"
             android:hint="독후감 제목을 입력해주세요:)"
             android:inputType="textAutoComplete"
             android:maxLength="20"/>
@@ -125,6 +126,7 @@
             android:layout_width="match_parent"
             android:layout_height="250dp"
             android:gravity="top"
+            android:fontFamily="@font/hanna_air"
             android:hint="책은 어떠셨나요?"
             android:maxLength="500"/>
 
@@ -138,7 +140,8 @@
         android:layout_marginEnd="20dp"
         android:layout_marginBottom="15dp"
         android:text="하루 독후감 등록"
-        android:textSize="18sp"
+        android:fontFamily="@font/hanna_air"
+        android:textSize="22sp"
         app:layout_constraintBottom_toBottomOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".ui.bookreport.BookReportModifyFragment">
 
     <com.google.android.material.appbar.AppBarLayout
@@ -78,10 +78,10 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="6dp"
         android:padding="10dp"
-        app:endIconMode="clear_text"
-        app:hintEnabled="false"
         app:counterEnabled="true"
         app:counterMaxLength="20"
+        app:endIconMode="clear_text"
+        app:hintEnabled="false"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_book_report_title">
@@ -90,9 +90,10 @@
             android:id="@+id/et_book_report_title"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:fontFamily="@font/hanna_air"
             android:hint="독후감 제목을 입력해주세요:)"
             android:inputType="textAutoComplete"
-            android:maxLength="20"/>
+            android:maxLength="20" />
 
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -113,9 +114,9 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="6dp"
         android:padding="10dp"
-        app:hintEnabled="false"
         app:counterEnabled="true"
         app:counterMaxLength="500"
+        app:hintEnabled="false"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_book_report_contents">
@@ -124,9 +125,10 @@
             android:id="@+id/et_book_report_contents"
             android:layout_width="match_parent"
             android:layout_height="250dp"
+            android:fontFamily="@font/hanna_air"
             android:gravity="top"
             android:hint="책은 어떠셨나요?"
-            android:maxLength="500"/>
+            android:maxLength="500" />
 
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -137,8 +139,9 @@
         android:layout_marginStart="20dp"
         android:layout_marginEnd="20dp"
         android:layout_marginBottom="15dp"
+        android:fontFamily="@font/hanna_air"
         android:text="하루 독후감 수정"
-        android:textSize="18sp"
+        android:textSize="22sp"
         app:layout_constraintBottom_toBottomOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
