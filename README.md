@@ -1,5 +1,5 @@
 # 📖 하루독후감
-<p align="left"><img src="https://user-images.githubusercontent.com/79504043/196118811-a08a4517-00f5-4d2e-bb50-a07621a854b1.png" width="960" height="480"/></p>
+<p align="left"><img src="https://user-images.githubusercontent.com/79504043/202438742-4920616e-59a0-4561-8b7b-7205afb1dfd2.png" width="960" height="440"/></p>
 
 </br>
 
@@ -34,7 +34,7 @@
 
 | 책 검색 | 독후감 등록 | 독후감 수정 및 삭제 | 
 |:--------:|:--------:|:--------:|
-| ![](https://user-images.githubusercontent.com/79504043/197685470-a81b6f61-7a4e-4c2d-a6b9-8b08d4469bea.gif) | ![](https://user-images.githubusercontent.com/79504043/197686020-802409e5-3bd4-49df-9e7f-b4e65e313989.gif) | ![](https://user-images.githubusercontent.com/79504043/197703976-29d05793-b255-4283-8f27-163f194a3ea2.gif) | 
+| ![](https://user-images.githubusercontent.com/79504043/197685470-a81b6f61-7a4e-4c2d-a6b9-8b08d4469bea.gif) | ![](https://user-images.githubusercontent.com/79504043/202439253-64abc3cc-f81f-411c-a1a1-c146791ee47e.gif) | ![](https://user-images.githubusercontent.com/79504043/197703976-29d05793-b255-4283-8f27-163f194a3ea2.gif) | 
 
 
 | 즐겨찾기 등록 및 삭제 | 검색 정렬 설정 및 캐시 비우기 | 알람 설정 |
