@@ -24,6 +24,7 @@
 - 검색 정렬 선택
 - 앱 내 캐시 정리
 - 독후감 알람 설정 (버전 1.2에 추가)
+- 책 정보 화면에서 상세 링크로 이동 (버전 1.3에 추가)
 
 </br>
 
@@ -84,14 +85,14 @@
 ```kotlin
 @Test
 fun x1_multiplyBy_2() {
-	// Given
-	val x = 1
-	
-	// When
-	val result = Utils.multipleBy2(x)
+  // Given
+  val x = 1
 
-	// Then
-	asserEquals(2, result)
+  // When
+  val result = Utils.multipleBy2(x)
+
+  // Then
+  asserEquals(2, result)
 }
 
 ```
@@ -218,22 +219,22 @@ fun x1_multiplyBy_2() {
 
 ```kotlin
 private fun searchBooks() {
-        var startTime = System.currentTimeMillis()
-        var endTime: Long
+  var startTime = System.currentTimeMillis()
+  var endTime: Long
 
-        binding.etSearch.addTextChangedListener { text: Editable? ->
-            endTime = System.currentTimeMillis()
-            if (endTime - startTime >= SEARCH_BOOKS_TIME_DELAY) {
-                text?.let {
-                    val query = it.toString().trim()
-                    if (query.isNotEmpty()) {
-                        searchViewModel.searchBooksPaging(query)
-                    }
-                }
-            }
-            startTime = endTime
+  binding.etSearch.addTextChangedListener { text: Editable? ->
+    endTime = System.currentTimeMillis()
+    if (endTime - startTime >= SEARCH_BOOKS_TIME_DELAY) {
+      text?.let {
+        val query = it.toString().trim()
+        if (query.isNotEmpty()) {
+          searchViewModel.searchBooksPaging(query)
         }
+      }
     }
+    startTime = endTime
+  }
+}
 ```
 
 - **실시간 검색기능**
@@ -243,11 +244,11 @@ private fun searchBooks() {
 
 ```kotlin
 fun <T> Fragment.collectLatestStateFlow(flow: Flow<T>, collector: suspend (T) -> Unit) {
-    viewLifecycleOwner.lifecycleScope.launch {
-        viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
-            flow.collectLatest(collector)
-        }
+  viewLifecycleOwner.lifecycleScope.launch {
+    viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
+      flow.collectLatest(collector)
     }
+  }
 }
 ```
 
@@ -261,15 +262,15 @@ fun <T> Fragment.collectLatestStateFlow(flow: Flow<T>, collector: suspend (T) ->
 **SearchFragment**
 ```kotlin
 private fun listenSearchWordChange() {
-    binding.etSearch.addTextChangedListener { text ->
-        if (text != null) searchViewModel.handleSearchWord(text.toString())
-    }
+  binding.etSearch.addTextChangedListener { text ->
+    if (text != null) searchViewModel.handleSearchWord(text.toString())
+  }
 }
 
 private fun updateSearchWord() {
-    collectLatestStateFlow(searchViewModel.searchWord) { query ->
-        searchViewModel.searchBooksPaging(query)
-    }
+  collectLatestStateFlow(searchViewModel.searchWord) { query ->
+    searchViewModel.searchBooksPaging(query)
+  }
 }
 ```
 
@@ -280,19 +281,19 @@ val searchWord = _searchWord.debounce { 200 }
 
 
 fun handleSearchWord(word: String) {
-    viewModelScope.launch {
-        _searchWord.emit(word)
-    }
+  viewModelScope.launch {
+    _searchWord.emit(word)
+  }
 }
 
 fun searchBooksPaging(query: String) {
-    viewModelScope.launch {
-        bookSearchRepository.searchBooksPaging(query, getSortMode())
-            .cachedIn(viewModelScope)
-            .collect {
-                _searchPagingResult.value = it
-            }
-    }
+  viewModelScope.launch {
+    bookSearchRepository.searchBooksPaging(query, getSortMode())
+      .cachedIn(viewModelScope)
+      .collect {
+        _searchPagingResult.value = it
+      }
+  }
 }
 ```
 
@@ -365,20 +366,20 @@ fun searchBooksPaging(query: String) {
 ```kotlin
 // ViewModel이 Repository를 가지고 있고, Repository가 DataSource를, DataSource는 AssetLoader를 ...
 class ViewModelFactory(private val context: Context) : ViewModelProvider.Factory {
-    override fun <T : ViewModel> create(modelClass: Class<T>): T {
-        return when {
-            modelClass.isAssignableFrom(HomeViewModel::class.java) -> {
-                HomeViewModel(HomeRepository(HomeAssetDataSource(AssetLoader(context)))) as T
-            }
-            modelClass.isAssignableFrom(CategoryViewModel::class.java) -> {
-                val repository = CategoryRepository(CategoryRemoteDataSource(ApiClient.create()))
-                CategoryViewModel(repository) as T
-            }
-            else -> {
-                throw IllegalArgumentException("Failed to create ViewModel: ${modelClass.name}")
-            }
-        }
+  override fun <T : ViewModel> create(modelClass: Class<T>): T {
+    return when {
+      modelClass.isAssignableFrom(HomeViewModel::class.java) -> {
+        HomeViewModel(HomeRepository(HomeAssetDataSource(AssetLoader(context)))) as T
+      }
+      modelClass.isAssignableFrom(CategoryViewModel::class.java) -> {
+        val repository = CategoryRepository(CategoryRemoteDataSource(ApiClient.create()))
+        CategoryViewModel(repository) as T
+      }
+      else -> {
+        throw IllegalArgumentException("Failed to create ViewModel: ${modelClass.name}")
+      }
     }
+  }
 }
 ```
 
@@ -432,33 +433,33 @@ class ViewModelFactory(private val context: Context) : ViewModelProvider.Factory
 ```kotlin
 interface BookSearchApi {
 
-    @Headers("Authorization: KakaoAK $API_KEY")
-    @GET("v3/search/book")
-    suspend fun searchBooks(
-        @Query("query") query: String,
-        @Query("sort") sort: String,
-        @Query("page") page: Int,
-        @Query("size") size: Int
-    ): Response<SearchResponse>
+  @Headers("Authorization: KakaoAK $API_KEY")
+  @GET("v3/search/book")
+  suspend fun searchBooks(
+    @Query("query") query: String,
+    @Query("sort") sort: String,
+    @Query("page") page: Int,
+    @Query("size") size: Int
+  ): Response<SearchResponse>
 }
 ```
 
 ```kotlin
 class BookSearchPagingSource(
-    private val api: BookSearchApi,
-    private val query: String,
-    private val sort: String,
+  private val api: BookSearchApi,
+  private val query: String,
+  private val sort: String,
 ) : PagingSource<Int, Book>() {
 
-	override suspend fun load(params: LoadParams<Int>): LoadResult<Int, Book> {
-		...
-		val response = api.searchBooks(query, sort, pageNumber, params.loadSize)
-		...
-	}
+  override suspend fun load(params: LoadParams<Int>): LoadResult<Int, Book> {
+    ...
+    val response = api.searchBooks(query, sort, pageNumber, params.loadSize)
+    ...
+  }
 
-	override fun getRefreshKey(state: PagingState<Int, Book>): Int? {
-        ...
-    }
+  override fun getRefreshKey(state: PagingState<Int, Book>): Int? {
+    ...
+  }
 ```
 
 </br>
@@ -470,10 +471,10 @@ class BookSearchPagingSource(
 @Dao
 interface BookReportDao {
 
-    ...
+  ...
 
-    @Query("SELECT * FROM bookReports")
-    fun getBookReportsPaging(): PagingSource<Int, BookReport> // Room 은 쿼리 결과를 PagingSource 타입으로 반환받을 수 있다.
+  @Query("SELECT * FROM bookReports")
+  fun getBookReportsPaging(): PagingSource<Int, BookReport> // Room 은 쿼리 결과를 PagingSource 타입으로 반환받을 수 있다.
 }
 
 ```
