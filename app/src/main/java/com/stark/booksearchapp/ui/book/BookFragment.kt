@@ -61,10 +61,16 @@ class BookFragment : Fragment() {
     }
 
     private fun goToLink(book: Book) {
-        binding.btnGoToLink.setOnClickListener {
-            val intent = Intent(Intent.ACTION_VIEW)
-            intent.data = Uri.parse(book.url)
-            startActivity(intent)
+        binding.toolBar.setOnMenuItemClickListener {
+            when (it.itemId) {
+                R.id.go_to_link -> {
+                    val intent = Intent(Intent.ACTION_VIEW)
+                    intent.data = Uri.parse(book.url)
+                    startActivity(intent)
+                    true
+                }
+                else -> false
+            }
         }
     }
 
@@ -88,7 +94,8 @@ class BookFragment : Fragment() {
     }
 
     private fun hideBottomNavigation() {
-        val bottomNavigation = (activity as MainActivity).findViewById<BottomNavigationView>(R.id.bottom_navigation_view)
+        val bottomNavigation =
+            (activity as MainActivity).findViewById<BottomNavigationView>(R.id.bottom_navigation_view)
         bottomNavigation.visibility = View.GONE
     }
 

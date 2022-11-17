@@ -22,4 +22,5 @@
     <string name="cache_policy">캐시정책</string>
     <string name="cache_policy_content">자동으로 캐시 삭제 활성화</string>
     <string name="cache_status">상태</string>
+    <string name="go_to_link">상세 링크로 이동</string>
 </resources>

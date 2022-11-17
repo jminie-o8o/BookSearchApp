@@ -23,6 +23,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
+            app:menu="@menu/go_to_link_menu"
             app:title="책 정보"
             app:titleTextColor="@color/white" />
 
@@ -74,17 +75,6 @@
         android:textSize="14sp"
         app:layout_constraintStart_toEndOf="@id/iv_article_image"
         app:layout_constraintTop_toBottomOf="@id/tv_author" />
-
-    <Button
-        android:id="@+id/btn_go_to_link"
-        android:layout_width="wrap_content"
-        android:layout_height="46dp"
-        android:layout_marginStart="20dp"
-        android:layout_marginEnd="20dp"
-        android:text="상세 링크"
-        android:textSize="14sp"
-        app:layout_constraintBottom_toBottomOf="@+id/iv_article_image"
-        app:layout_constraintEnd_toEndOf="parent" />
 
     <TextView
         android:id="@+id/tv_contents_title"
