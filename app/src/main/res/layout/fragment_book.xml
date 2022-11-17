@@ -40,12 +40,12 @@
         tools:ignore="ContentDescription" />
 
     <TextView
-        android:id="@+id/tv_author"
+        android:id="@+id/tv_title"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:maxLines="2"
-        android:text="Author"
+        android:text="Title"
         android:textSize="16sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
@@ -53,16 +53,16 @@
         app:layout_constraintTop_toTopOf="@id/iv_article_image" />
 
     <TextView
-        android:id="@+id/tv_price"
+        android:id="@+id/tv_author"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
-        android:text="Price"
+        android:text="Author"
         android:textSize="14sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@id/iv_article_image"
-        app:layout_constraintTop_toBottomOf="@id/tv_author" />
+        app:layout_constraintTop_toBottomOf="@id/tv_title" />
 
     <TextView
         android:id="@+id/tv_publisher"
@@ -73,7 +73,7 @@
         android:text="Publisher"
         android:textSize="14sp"
         app:layout_constraintStart_toEndOf="@id/iv_article_image"
-        app:layout_constraintTop_toBottomOf="@id/tv_price" />
+        app:layout_constraintTop_toBottomOf="@id/tv_author" />
 
     <Button
         android:id="@+id/btn_go_to_link"
@@ -81,24 +81,37 @@
         android:layout_height="46dp"
         android:layout_marginStart="20dp"
         android:layout_marginEnd="20dp"
-        android:layout_marginBottom="15dp"
-        android:text="상세 링크로 이동"
-        android:textSize="12sp"
+        android:text="상세 링크"
+        android:textSize="14sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_price"/>
+        app:layout_constraintBottom_toBottomOf="@+id/iv_article_image"/>
 
     <TextView
-        android:id="@+id/tv_book_report_contents_detail"
+        android:id="@+id/tv_contents_title"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginEnd="10dp"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:text="책 정보"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/iv_article_image"
+        app:layout_constraintTop_toBottomOf="@+id/iv_article_image"
+        tools:text="책 정보" />
+
+    <TextView
+        android:id="@+id/tv_contents_detail"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
         android:layout_marginStart="10dp"
         android:layout_marginEnd="10dp"
         android:lineSpacingExtra="8dp"
         android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_publisher"
+        app:layout_constraintTop_toBottomOf="@+id/tv_contents_title"
         tools:text="책 본문 내용입니다. 책 본문 내용입니다. 책 본문 내용입니다. 책 본문 내용입니다. 책 본문 내용입니다. 책 본문 내용입니다. 책 본문 내용입니다. 책 본문 내용입니다. 책 본문 내용입니다.  책 본문 내용입니다.책 본문 내용입니다.책 본문 내용입니다.책 본문 내용입니다.책 본문 내용입니다.책 본문 내용입니다." />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
@@ -117,7 +130,7 @@
         android:id="@+id/fab_favorite"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="32dp"
+        android:layout_marginEnd="20dp"
         android:layout_marginBottom="20dp"
         android:src="@drawable/ic_favorite_24"
         app:layout_constraintBottom_toTopOf="@+id/btn_register_book_report"

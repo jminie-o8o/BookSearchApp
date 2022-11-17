@@ -1,16 +1,17 @@
 package com.stark.booksearchapp.ui.book
 
-import android.annotation.SuppressLint
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.webkit.WebViewClient
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
+import coil.load
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.snackbar.Snackbar
 import com.stark.booksearchapp.R
@@ -32,15 +33,16 @@ class BookFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        _binding = com.stark.booksearchapp.databinding.FragmentBookBinding.inflate(inflater, container, false)
+    ): View {
+        _binding = FragmentBookBinding.inflate(inflater, container, false)
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val book = args.book
-        setWabView(book)
+        setBookInformation(book)
+        goToLink(book)
         saveBook(view, book)
         hideBottomNavigation()
         goBack()
@@ -48,12 +50,21 @@ class BookFragment : Fragment() {
         observeError()
     }
 
-    @SuppressLint("SetJavaScriptEnabled")
-    private fun setWabView(book: Book) {
-        binding.webView.apply {
-            webViewClient = WebViewClient()
-            settings.javaScriptEnabled = true
-            loadUrl(book.url)
+    private fun setBookInformation(book: Book) {
+        val author = book.authors.toString().removeSurrounding("[", "]")
+        val publisher = book.publisher
+        binding.ivArticleImage.load(book.thumbnail)
+        binding.tvTitle.text = book.title
+        binding.tvAuthor.text = "$author | $publisher"
+        binding.tvPublisher.text = book.publisher
+        binding.tvContentsDetail.text = book.contents
+    }
+
+    private fun goToLink(book: Book) {
+        binding.btnGoToLink.setOnClickListener {
+            val intent = Intent(Intent.ACTION_VIEW)
+            intent.data = Uri.parse(book.url)
+            startActivity(intent)
         }
     }
 
@@ -69,16 +80,6 @@ class BookFragment : Fragment() {
             val action = BookFragmentDirections.actionFragmentBookToRegisterBookReportFragment(book)
             findNavController().navigate(action)
         }
-    }
-
-    override fun onPause() {
-        binding.webView.onPause()
-        super.onPause()
-    }
-
-    override fun onResume() {
-        super.onResume()
-        binding.webView.onResume()
     }
 
     override fun onDestroy() {
