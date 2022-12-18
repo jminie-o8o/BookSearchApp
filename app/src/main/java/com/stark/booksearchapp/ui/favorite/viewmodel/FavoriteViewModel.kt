@@ -45,4 +45,10 @@ class FavoriteViewModel @Inject constructor(
     fun deleteBook(book: Book) = viewModelScope.launch(Dispatchers.IO + exceptionHandler) {
         bookSearchRepository.deleteBook(book)
     }
+
+    fun handlePagingError(throwable: Throwable) {
+        viewModelScope.launch {
+            _error.emit(CoroutineException.checkThrowableAtViewModel(throwable))
+        }
+    }
 }
