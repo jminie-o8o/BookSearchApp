@@ -7,7 +7,7 @@ import java.net.SocketException
 import java.net.UnknownHostException
 
 object CoroutineException {
-    fun checkThrowableAtViewModel(throwable: Throwable): CEHModel {
+    fun handleThrowableWithCEHModel(throwable: Throwable): CEHModel {
         return when (throwable) {
             is SocketException -> CEHModel(throwable, "소켓 연결이 끊겼습니다.")
             is ConnectException -> CEHModel(throwable, "네트워크 연결이 불안정합니다.")

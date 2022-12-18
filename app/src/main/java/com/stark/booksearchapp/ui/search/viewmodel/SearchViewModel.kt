@@ -41,7 +41,7 @@ class SearchViewModel @Inject constructor(
 
     private val exceptionHandler = CoroutineExceptionHandler { _, throwable ->
         viewModelScope.launch {
-            _error.emit(CoroutineException.checkThrowableAtViewModel(throwable))
+            _error.emit(CoroutineException.handleThrowableWithCEHModel(throwable))
         }
     }
 
@@ -63,7 +63,7 @@ class SearchViewModel @Inject constructor(
 
     fun handlePagingError(throwable: Throwable) {
         viewModelScope.launch {
-            _error.emit(CoroutineException.checkThrowableAtViewModel(throwable))
+            _error.emit(CoroutineException.handleThrowableWithCEHModel(throwable))
         }
     }
 
