@@ -14,10 +14,12 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharedFlow
+import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.debounce
 import kotlinx.coroutines.flow.first
+import kotlinx.coroutines.flow.shareIn
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import javax.inject.Inject
@@ -29,6 +31,7 @@ class SearchViewModel @Inject constructor(
 
     private val _searchWord = MutableSharedFlow<String>()
     val searchWord = _searchWord.debounce { 200 }
+        .shareIn(viewModelScope, SharingStarted.Eagerly, 0)
 
     private val _searchPagingResult = MutableStateFlow<PagingData<Book>>(PagingData.empty())
     val searchPagingResult: StateFlow<PagingData<Book>> = _searchPagingResult.asStateFlow()
@@ -55,6 +58,12 @@ class SearchViewModel @Inject constructor(
                 .collect {
                     _searchPagingResult.value = it
                 }
+        }
+    }
+
+    fun handlePagingError(throwable: Throwable) {
+        viewModelScope.launch {
+            _error.emit(CoroutineException.checkThrowableAtViewModel(throwable))
         }
     }
 

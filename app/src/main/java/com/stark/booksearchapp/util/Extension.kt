@@ -11,7 +11,7 @@ import kotlinx.coroutines.launch
 
 fun <T> Fragment.collectStateFlow(flow: Flow<T>, collector: FlowCollector<T>) {
     viewLifecycleOwner.lifecycleScope.launch {
-        viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
+        viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) { // 뷰가 보여지기 직전인 onStart 에서 옵저빙
             flow.collect(collector)
         }
     }

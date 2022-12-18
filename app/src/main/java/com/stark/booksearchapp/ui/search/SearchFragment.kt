@@ -117,7 +117,9 @@ class SearchFragment : Fragment() {
                 loadState.refresh is LoadState.Error -> loadState.refresh as LoadState.Error
                 else -> null
             }
-            CoroutineException.checkThrowableAtView(errorState?.error, requireContext())
+            errorState?.error?.let { throwable ->
+                searchViewModel.handlePagingError(throwable)
+            }
         }
     }
 
