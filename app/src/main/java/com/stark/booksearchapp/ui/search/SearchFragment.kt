@@ -20,7 +20,6 @@ import com.stark.booksearchapp.ui.MainActivity
 import com.stark.booksearchapp.ui.search.adapter.BookSearchLoadStateAdapter
 import com.stark.booksearchapp.ui.search.adapter.BookSearchPagingAdapter
 import com.stark.booksearchapp.ui.search.viewmodel.SearchViewModel
-import com.stark.booksearchapp.util.CoroutineException
 import com.stark.booksearchapp.util.collectLatestStateFlow
 import com.stark.booksearchapp.util.collectStateFlow
 import dagger.hilt.android.AndroidEntryPoint

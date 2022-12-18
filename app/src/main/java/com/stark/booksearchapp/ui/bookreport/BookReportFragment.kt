@@ -18,7 +18,6 @@ import com.stark.booksearchapp.ui.MainActivity
 import com.stark.booksearchapp.ui.adapter.BookReportPagingAdapter
 import com.stark.booksearchapp.ui.bookreport.viewmodel.BookReportViewModel
 import com.stark.booksearchapp.ui.search.adapter.BookSearchLoadStateAdapter
-import com.stark.booksearchapp.util.CoroutineException
 import com.stark.booksearchapp.util.collectLatestStateFlow
 import com.stark.booksearchapp.util.collectStateFlow
 import dagger.hilt.android.AndroidEntryPoint
@@ -79,7 +78,9 @@ class BookReportFragment : Fragment() {
                 loadState.refresh is LoadState.Error -> loadState.refresh as LoadState.Error
                 else -> null
             }
-            CoroutineException.checkThrowableAtView(errorState?.error, requireContext())
+            errorState?.error?.let { throwable ->
+                bookReportViewModel.handlePagingError(throwable)
+            }
         }
     }
 

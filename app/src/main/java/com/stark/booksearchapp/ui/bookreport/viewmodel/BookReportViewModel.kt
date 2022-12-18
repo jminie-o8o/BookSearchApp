@@ -37,4 +37,10 @@ class BookReportViewModel @Inject constructor(
         bookReportRepository.getBookReportPaging()
             .cachedIn(viewModelScope + exceptionHandler)
             .stateIn(viewModelScope, SharingStarted.WhileSubscribed(5000), PagingData.empty())
+
+    fun handlePagingError(throwable: Throwable) {
+        viewModelScope.launch {
+            _error.emit(CoroutineException.checkThrowableAtViewModel(throwable))
+        }
+    }
 }
